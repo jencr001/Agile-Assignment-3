@@ -69,17 +69,24 @@ namespace PreferentialVoting
                 Vote vote = new Vote();
                 foreach (DataGridViewCell cell in VotesGridView.Rows[i].Cells) 
                 {
-                    int n;
-                   
-                    if (int.TryParse(cell.Value.ToString(), out n))
+                    if (cell.Value == null)
                     {
-                        
-                        vote.Add(VotesGridView.Columns[cell.ColumnIndex].Name, n);
+                        vote.Add(VotesGridView.Columns[cell.ColumnIndex].Name, -1);
                     }
                     else
                     {
-                        MessageBox.Show("Value must be a number");
-                        return;
+                        int n;
+
+                        if (int.TryParse(cell.Value.ToString(), out n))
+                        {
+
+                            vote.Add(VotesGridView.Columns[cell.ColumnIndex].Name, n);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Value must be a number");
+                            return;
+                        }
                     }
                 }
                 allVotes.Add(vote);

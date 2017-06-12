@@ -87,6 +87,11 @@ namespace PreferentialVoting.Classes
 
         private void calculateRound()
         {
+            results.Clear();
+            foreach (string candidate in candidates)
+            {
+                results.Add(candidate, 0);
+            }
             for (int i = 0; i < this.Count; i++)
             {
                 {
