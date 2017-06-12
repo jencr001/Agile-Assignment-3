@@ -92,7 +92,32 @@ namespace PreferentialVoting
                 allVotes.Add(vote);
             }
             
-            allVotes.calculateResult(candidates);
+            Result finalResult = allVotes.calculateResult(candidates);
+            
+            string winnerText = "";
+            
+            if (finalResult.Winners.Count == 1)
+            {
+                winnerText = finalResult.Winners[0];
+            }
+            else
+            {
+                for (int i = 0; i < finalResult.Winners.Count; i++)
+                {
+                    
+                    if (i == finalResult.Winners.Count - 1)
+                    {
+                        winnerText += finalResult.Winners[i] + " tie";
+                    }
+                    else 
+                    {
+                        winnerText += finalResult.Winners[i] + " and ";
+                    }
+                }
+                
+            }
+            WinnerLabel.Text = winnerText;
+            
         }
 
         

@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Result.cs" />
     <Compile Include="Classes\Vote.cs" />
     <Compile Include="Classes\VotesList.cs" />
     <Compile Include="Main.cs">

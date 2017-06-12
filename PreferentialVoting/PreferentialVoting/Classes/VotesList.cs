@@ -22,7 +22,7 @@ namespace PreferentialVoting.Classes
               this.numberOfVotes = other.numberOfVotes;
           }*/
         public VotesList() { }
-        public void calculateResult(List<string> _candidates)
+        public Result calculateResult(List<string> _candidates)
         {
             candidates = _candidates;
             numberOfVotes = this.Count;
@@ -38,7 +38,7 @@ namespace PreferentialVoting.Classes
                 if (this[i].checkIfInvalidVote(candidates))
                 {
                     numberOfVotes--;
-                    majority = numberOfVotes / 2;
+                    majority = numberOfVotes / 2 + 1;
                     numberOfInvalidVotes++;
                     this.Remove(this[i]);
                 }
@@ -82,6 +82,9 @@ namespace PreferentialVoting.Classes
             //get result
             String asString = string.Join(";", results);
             Console.WriteLine(asString);
+            Result finalResult = new Result();
+            finalResult.Results = results;
+            return finalResult;
 
         }
 

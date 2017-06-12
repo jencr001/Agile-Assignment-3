@@ -38,7 +38,7 @@
             this.ResultsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.CountVotesButton = new System.Windows.Forms.Button();
             this.ResultsGroupBox = new System.Windows.Forms.GroupBox();
-            this.WinnerLabel = new System.Windows.Forms.Label();
+            this.WinnerHeadingLabel = new System.Windows.Forms.Label();
             this.InvalidVotesLabel = new System.Windows.Forms.Label();
             this.InvalidVotesHeadingLabel = new System.Windows.Forms.Label();
             this.ExportCSVButton = new System.Windows.Forms.Button();
@@ -47,6 +47,7 @@
             this.HeadingHeadingLabel = new System.Windows.Forms.Label();
             this.CandidateGroupBox = new System.Windows.Forms.GroupBox();
             this.VotesGridView = new System.Windows.Forms.DataGridView();
+            this.WinnerLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ResultsChart)).BeginInit();
             this.ResultsGroupBox.SuspendLayout();
             this.CandidateGroupBox.SuspendLayout();
@@ -119,6 +120,7 @@
             // ResultsGroupBox
             // 
             this.ResultsGroupBox.Controls.Add(this.WinnerLabel);
+            this.ResultsGroupBox.Controls.Add(this.WinnerHeadingLabel);
             this.ResultsGroupBox.Controls.Add(this.InvalidVotesLabel);
             this.ResultsGroupBox.Controls.Add(this.InvalidVotesHeadingLabel);
             this.ResultsGroupBox.Controls.Add(this.ResultsChart);
@@ -129,14 +131,14 @@
             this.ResultsGroupBox.TabStop = false;
             this.ResultsGroupBox.Text = "Results";
             // 
-            // WinnerLabel
+            // WinnerHeadingLabel
             // 
-            this.WinnerLabel.AutoSize = true;
-            this.WinnerLabel.Location = new System.Drawing.Point(31, 42);
-            this.WinnerLabel.Name = "WinnerLabel";
-            this.WinnerLabel.Size = new System.Drawing.Size(177, 13);
-            this.WinnerLabel.TabIndex = 8;
-            this.WinnerLabel.Text = "The Candidate That Won the Vote: ";
+            this.WinnerHeadingLabel.AutoSize = true;
+            this.WinnerHeadingLabel.Location = new System.Drawing.Point(31, 42);
+            this.WinnerHeadingLabel.Name = "WinnerHeadingLabel";
+            this.WinnerHeadingLabel.Size = new System.Drawing.Size(177, 13);
+            this.WinnerHeadingLabel.TabIndex = 8;
+            this.WinnerHeadingLabel.Text = "The Candidate That Won the Vote: ";
             // 
             // InvalidVotesLabel
             // 
@@ -214,6 +216,15 @@
             this.VotesGridView.Size = new System.Drawing.Size(594, 199);
             this.VotesGridView.TabIndex = 4;
             // 
+            // WinnerLabel
+            // 
+            this.WinnerLabel.AutoSize = true;
+            this.WinnerLabel.Location = new System.Drawing.Point(214, 42);
+            this.WinnerLabel.Name = "WinnerLabel";
+            this.WinnerLabel.Size = new System.Drawing.Size(33, 13);
+            this.WinnerLabel.TabIndex = 9;
+            this.WinnerLabel.Text = "None";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,13 +260,14 @@
         private System.Windows.Forms.GroupBox ResultsGroupBox;
         private System.Windows.Forms.Label InvalidVotesLabel;
         private System.Windows.Forms.Label InvalidVotesHeadingLabel;
-        private System.Windows.Forms.Label WinnerLabel;
+        private System.Windows.Forms.Label WinnerHeadingLabel;
         private System.Windows.Forms.Button ExportCSVButton;
         private System.Windows.Forms.Button PrintButton;
         private System.Windows.Forms.Button ResetVoteButton;
         private System.Windows.Forms.Label HeadingHeadingLabel;
         private System.Windows.Forms.GroupBox CandidateGroupBox;
         private System.Windows.Forms.DataGridView VotesGridView;
+        private System.Windows.Forms.Label WinnerLabel;
     }
 }
 
