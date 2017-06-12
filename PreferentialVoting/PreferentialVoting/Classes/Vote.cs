@@ -23,6 +23,7 @@ namespace PreferentialVoting.Classes
         }
         public Vote()
         {
+            currentPreferenceNumber = 1;
         }
 
         public Vote(Vote other)
@@ -38,7 +39,7 @@ namespace PreferentialVoting.Classes
 
             for (int i = 1; i <= candidates.Count; i++)
             {
-                numbers[i] = i;
+                numbers.Add(i);
             }
 
             foreach (KeyValuePair<string, int> entry in this)
@@ -48,7 +49,7 @@ namespace PreferentialVoting.Classes
 
                 if (numbers.Contains(entry.Value))
                 {
-                    numbers.Remove(entry.Value - 1);
+                    numbers.Remove(entry.Value);
                 }
                 else return true;
 
@@ -63,15 +64,15 @@ namespace PreferentialVoting.Classes
 
         public void redistrbuteCandidate(string candidate)
         {
-            int preferenceNumber = 0;
-            if (this.TryGetValue(candidate, out preferenceNumber))
+            int candidatePreferenceNumber = 0;
+            if (this.TryGetValue(candidate, out candidatePreferenceNumber))
             {
-                if (preferenceNumber == currentPreferenceNumber)
+                if (candidatePreferenceNumber == currentPreferenceNumber)
                 {
                     do
                     {
-                        preferenceNumber++;
-                    } while (!this.Values.Contains(preferenceNumber));
+                        currentPreferenceNumber++;
+                    } while (!this.Values.Contains(candidatePreferenceNumber));
                 }
                 this.Remove(candidate);
             }

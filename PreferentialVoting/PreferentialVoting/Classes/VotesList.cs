@@ -13,33 +13,43 @@ namespace PreferentialVoting.Classes
         private int numberOfVotes;
         private int numberOfInvalidVotes;
 
-        public VotesList(VotesList other)
-        {
-            this.results = other.results;
-            this.candidates = other.candidates;
-            this.majority = other.majority;
-            this.numberOfInvalidVotes = other.numberOfInvalidVotes;
-            this.numberOfVotes = other.numberOfVotes;
-        }
+        /*  public VotesList(VotesList other)
+          {
+              this.results = other.results;
+              this.candidates = other.candidates;
+              this.majority = other.majority;
+              this.numberOfInvalidVotes = other.numberOfInvalidVotes;
+              this.numberOfVotes = other.numberOfVotes;
+          }*/
         public VotesList() { }
         public void calculateResult(List<string> _candidates)
         {
             candidates = _candidates;
             numberOfVotes = this.Count;
-            majority = numberOfVotes / 2;
+            majority = numberOfVotes / 2 + 1;
             numberOfInvalidVotes = 0;
             bool finalTie = false;
             foreach (string candidate in candidates)
             {
                 results.Add(candidate, 0);
             }
-
+            for (int i = 0; i < this.Count; i++)
+            {
+                if (this[i].checkIfInvalidVote(candidates))
+                {
+                    numberOfVotes--;
+                    majority = numberOfVotes / 2;
+                    numberOfInvalidVotes++;
+                    this.Remove(this[i]);
+                }
+            }
             int highestResult = 0;
 
             calculateRound();
             highestResult = results.Values.Max();
 
-            while (highestResult > (majority)) {
+            while (highestResult < (majority))
+            {
                 int lowestResult = results.Values.Min();
                 List<string> losers = new List<string>();
                 foreach (KeyValuePair<string, int> result in results)
@@ -48,14 +58,17 @@ namespace PreferentialVoting.Classes
                     {
                         losers.Add(result.Key);
                     }
-                    Random rnd = new Random();
-                    int index = rnd.Next(losers.Count);
-                    foreach (Vote vote in this)
-                    {
-                        vote.redistrbuteCandidate(losers[index]);
-                    }
-                    candidates.Remove(losers[index]);
+                    
                 }
+                Random rnd = new Random();
+                int index = rnd.Next(losers.Count);
+                foreach (Vote vote in this)
+                {
+                    vote.redistrbuteCandidate(losers[index]);
+                }
+                candidates.Remove(losers[index]);
+                results.Remove(losers[index]);
+
 
                 calculateRound();
                 highestResult = results.Values.Max();
@@ -74,25 +87,18 @@ namespace PreferentialVoting.Classes
 
         private void calculateRound()
         {
-            foreach (Vote vote in this)
+            for (int i = 0; i < this.Count; i++)
             {
-                if (vote.checkIfInvalidVote(candidates))
                 {
-                    numberOfVotes--;
-                    majority = numberOfVotes / 2;
-                    numberOfInvalidVotes++;
-                    this.Remove(vote);
-                }
-                else
-                {
-                    foreach (KeyValuePair<string, int> entry in vote)
-                    {
-                        if (entry.Value == vote.CurrentPreferenceNumber)
+                        foreach (KeyValuePair<string, int> entry in this[i])
                         {
-                            results[entry.Key]++;
+                            if (entry.Value == this[i].CurrentPreferenceNumber)
+                            {
+                                results[entry.Key]++;
+                            }
                         }
                     }
-                }
+                
             }
         }
     }

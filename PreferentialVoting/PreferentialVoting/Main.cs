@@ -84,8 +84,8 @@ namespace PreferentialVoting
                 }
                 allVotes.Add(vote);
             }
-            VotesList resultVotes = new VotesList(allVotes);
-            resultVotes.calculateResult(candidates);
+            
+            allVotes.calculateResult(candidates);
         }
 
         
