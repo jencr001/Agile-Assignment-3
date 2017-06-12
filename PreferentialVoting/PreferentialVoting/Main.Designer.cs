@@ -35,22 +35,22 @@
             this.editCandidateButton = new System.Windows.Forms.Button();
             this.RemoveCandidateButton = new System.Windows.Forms.Button();
             this.ImportCSVButton = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ResultsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.CountVotesButton = new System.Windows.Forms.Button();
             this.ResultsGroupBox = new System.Windows.Forms.GroupBox();
+            this.WinnerLabel = new System.Windows.Forms.Label();
             this.InvalidVotesLabel = new System.Windows.Forms.Label();
             this.InvalidVotesHeadingLabel = new System.Windows.Forms.Label();
-            this.WinnerLabel = new System.Windows.Forms.Label();
             this.ExportCSVButton = new System.Windows.Forms.Button();
             this.PrintButton = new System.Windows.Forms.Button();
             this.ResetVoteButton = new System.Windows.Forms.Button();
             this.HeadingHeadingLabel = new System.Windows.Forms.Label();
             this.CandidateGroupBox = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.ResultsChart)).BeginInit();
             this.ResultsGroupBox.SuspendLayout();
             this.CandidateGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // NewCandidateButton
@@ -82,20 +82,12 @@
             // 
             // ImportCSVButton
             // 
-            this.ImportCSVButton.Location = new System.Drawing.Point(445, 18);
+            this.ImportCSVButton.Location = new System.Drawing.Point(503, 19);
             this.ImportCSVButton.Name = "ImportCSVButton";
             this.ImportCSVButton.Size = new System.Drawing.Size(112, 23);
             this.ImportCSVButton.TabIndex = 3;
             this.ImportCSVButton.Text = "Import CSV";
             this.ImportCSVButton.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(21, 48);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(536, 199);
-            this.dataGridView1.TabIndex = 4;
             // 
             // ResultsChart
             // 
@@ -135,6 +127,15 @@
             this.ResultsGroupBox.TabStop = false;
             this.ResultsGroupBox.Text = "Results";
             // 
+            // WinnerLabel
+            // 
+            this.WinnerLabel.AutoSize = true;
+            this.WinnerLabel.Location = new System.Drawing.Point(31, 42);
+            this.WinnerLabel.Name = "WinnerLabel";
+            this.WinnerLabel.Size = new System.Drawing.Size(177, 13);
+            this.WinnerLabel.TabIndex = 8;
+            this.WinnerLabel.Text = "The Candidate That Won the Vote: ";
+            // 
             // InvalidVotesLabel
             // 
             this.InvalidVotesLabel.AutoSize = true;
@@ -152,15 +153,6 @@
             this.InvalidVotesHeadingLabel.Size = new System.Drawing.Size(71, 13);
             this.InvalidVotesHeadingLabel.TabIndex = 6;
             this.InvalidVotesHeadingLabel.Text = "Invalid Votes:";
-            // 
-            // WinnerLabel
-            // 
-            this.WinnerLabel.AutoSize = true;
-            this.WinnerLabel.Location = new System.Drawing.Point(31, 42);
-            this.WinnerLabel.Name = "WinnerLabel";
-            this.WinnerLabel.Size = new System.Drawing.Size(177, 13);
-            this.WinnerLabel.TabIndex = 8;
-            this.WinnerLabel.Text = "The Candidate That Won the Vote: ";
             // 
             // ExportCSVButton
             // 
@@ -182,7 +174,7 @@
             // 
             // ResetVoteButton
             // 
-            this.ResetVoteButton.Location = new System.Drawing.Point(463, 319);
+            this.ResetVoteButton.Location = new System.Drawing.Point(535, 319);
             this.ResetVoteButton.Name = "ResetVoteButton";
             this.ResetVoteButton.Size = new System.Drawing.Size(119, 23);
             this.ResetVoteButton.TabIndex = 10;
@@ -205,14 +197,22 @@
             this.CandidateGroupBox.Controls.Add(this.ImportCSVButton);
             this.CandidateGroupBox.Controls.Add(this.RemoveCandidateButton);
             this.CandidateGroupBox.Controls.Add(this.NewCandidateButton);
-            this.CandidateGroupBox.Location = new System.Drawing.Point(25, 60);
+            this.CandidateGroupBox.Location = new System.Drawing.Point(12, 60);
             this.CandidateGroupBox.Name = "CandidateGroupBox";
-            this.CandidateGroupBox.Size = new System.Drawing.Size(563, 253);
+            this.CandidateGroupBox.Size = new System.Drawing.Size(642, 253);
             this.CandidateGroupBox.TabIndex = 12;
             this.CandidateGroupBox.TabStop = false;
             this.CandidateGroupBox.Text = "Candidates";
             // 
-            // Form1
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(21, 48);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(594, 199);
+            this.dataGridView1.TabIndex = 4;
+            // 
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -224,13 +224,13 @@
             this.Controls.Add(this.ExportCSVButton);
             this.Controls.Add(this.ResultsGroupBox);
             this.Controls.Add(this.CountVotesButton);
-            this.Name = "Form1";
+            this.Name = "Main";
             this.Text = "Preferential Voting";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ResultsChart)).EndInit();
             this.ResultsGroupBox.ResumeLayout(false);
             this.ResultsGroupBox.PerformLayout();
             this.CandidateGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,7 +242,6 @@
         private System.Windows.Forms.Button editCandidateButton;
         private System.Windows.Forms.Button RemoveCandidateButton;
         private System.Windows.Forms.Button ImportCSVButton;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataVisualization.Charting.Chart ResultsChart;
         private System.Windows.Forms.Button CountVotesButton;
         private System.Windows.Forms.GroupBox ResultsGroupBox;
@@ -254,6 +253,7 @@
         private System.Windows.Forms.Button ResetVoteButton;
         private System.Windows.Forms.Label HeadingHeadingLabel;
         private System.Windows.Forms.GroupBox CandidateGroupBox;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
