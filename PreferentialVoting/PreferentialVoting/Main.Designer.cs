@@ -46,11 +46,11 @@
             this.ResetVoteButton = new System.Windows.Forms.Button();
             this.HeadingHeadingLabel = new System.Windows.Forms.Label();
             this.CandidateGroupBox = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.VotesGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.ResultsChart)).BeginInit();
             this.ResultsGroupBox.SuspendLayout();
             this.CandidateGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VotesGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // NewCandidateButton
@@ -88,6 +88,7 @@
             this.ImportCSVButton.TabIndex = 3;
             this.ImportCSVButton.Text = "Import CSV";
             this.ImportCSVButton.UseVisualStyleBackColor = true;
+            this.ImportCSVButton.Click += new System.EventHandler(this.ImportCSVButton_Click);
             // 
             // ResultsChart
             // 
@@ -113,6 +114,7 @@
             this.CountVotesButton.TabIndex = 6;
             this.CountVotesButton.Text = "Count Votes";
             this.CountVotesButton.UseVisualStyleBackColor = true;
+            this.CountVotesButton.Click += new System.EventHandler(this.CountVotesButton_Click);
             // 
             // ResultsGroupBox
             // 
@@ -193,7 +195,7 @@
             // CandidateGroupBox
             // 
             this.CandidateGroupBox.Controls.Add(this.editCandidateButton);
-            this.CandidateGroupBox.Controls.Add(this.dataGridView1);
+            this.CandidateGroupBox.Controls.Add(this.VotesGridView);
             this.CandidateGroupBox.Controls.Add(this.ImportCSVButton);
             this.CandidateGroupBox.Controls.Add(this.RemoveCandidateButton);
             this.CandidateGroupBox.Controls.Add(this.NewCandidateButton);
@@ -204,13 +206,13 @@
             this.CandidateGroupBox.TabStop = false;
             this.CandidateGroupBox.Text = "Candidates";
             // 
-            // dataGridView1
+            // VotesGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(21, 48);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(594, 199);
-            this.dataGridView1.TabIndex = 4;
+            this.VotesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.VotesGridView.Location = new System.Drawing.Point(21, 48);
+            this.VotesGridView.Name = "VotesGridView";
+            this.VotesGridView.Size = new System.Drawing.Size(594, 199);
+            this.VotesGridView.TabIndex = 4;
             // 
             // Main
             // 
@@ -230,7 +232,7 @@
             this.ResultsGroupBox.ResumeLayout(false);
             this.ResultsGroupBox.PerformLayout();
             this.CandidateGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VotesGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,7 +255,7 @@
         private System.Windows.Forms.Button ResetVoteButton;
         private System.Windows.Forms.Label HeadingHeadingLabel;
         private System.Windows.Forms.GroupBox CandidateGroupBox;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView VotesGridView;
     }
 }
 
