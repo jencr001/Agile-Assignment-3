@@ -12,7 +12,7 @@ namespace PreferentialVoting
 {
     public partial class Main : Form
     {
-        
+        //Made a change!!
         private VotesList allVotes;
         private List<string> candidates;
         public Main()
