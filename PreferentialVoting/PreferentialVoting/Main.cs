@@ -198,10 +198,38 @@ namespace PreferentialVoting
         private void editCandidateButton_Click(object sender, EventArgs e)
         {
 
+            // Checks if a part has been selected then removes it from the gridView
+            if (this.VotesGridView.SelectedColumns.Count > 0)
+            {
+                // Stupid fix
+                this.VotesGridView.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+
+                EditCandidate editCandidate = new EditCandidate(this);
+                editCandidate.Show();
+
+            }
+
+            // User is informed to select a candidate first, before editing
+            else
+            {
+                MessageBox.Show("You need to select a column first in order to edit it");
+            }
         }
 
-        
+        private void ResetVoteButton_Click(object sender, EventArgs e)
+        {
+            // Stupid fix
+            this.VotesGridView.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
 
-       
+            this.VotesGridView.Columns.Clear();
+            allVotes = new VotesList();
+            candidates = new List<string>();
+            WinnerLabel.Text = "None";
+            InvalidVotesLabel.Text = "0";
+           
+            // TODO: Clear chart somehow
+
+        }
+
     }
 }

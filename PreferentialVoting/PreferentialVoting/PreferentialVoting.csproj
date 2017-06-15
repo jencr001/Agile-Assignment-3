@@ -50,6 +50,12 @@
     <Compile Include="Classes\Result.cs" />
     <Compile Include="Classes\Vote.cs" />
     <Compile Include="Classes\VotesList.cs" />
+    <Compile Include="EditCandidate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCandidate.Designer.cs">
+      <DependentUpon>EditCandidate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EditCandidate.resx">
+      <DependentUpon>EditCandidate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>

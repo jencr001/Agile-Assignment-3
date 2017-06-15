@@ -9,41 +9,48 @@ using System.Windows.Forms;
 
 namespace PreferentialVoting
 {
-    public partial class NewCandidate : Form
+    public partial class EditCandidate : Form
     {
-
         private Main mainForm;     // An instance of the MainForm class
 
-        public NewCandidate(Main mainForm)
+        public EditCandidate(Main mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
-
         }
 
         /// <summary>
-        /// Adds the candidate to the list
+        /// Edits the candidate
         /// </summary>
         /// <param name="sender">The handle to the button</param>
         /// <param name="e">The extra messages</param>
-        private void AddCandidateButton_Click(object sender, EventArgs e)
+        private void EditCandidateButton_Click(object sender, EventArgs e)
         {
+            // Checks if the textbox is empty
+            if (CandidateTextBox.Text == "")
+            {
+                MessageBox.Show("Please enter a candidate", "Error");
+            }
 
             Boolean found = false;  // Whether the value is contained in the list
 
             // Goes through the list and changes the found variable if the candidate is already in the list
             for (int i = 0; i < mainForm.VotesGridView.Columns.Count; i++)
             {
-                if ((mainForm.VotesGridView.Columns[i].Name.Equals(CandidateTextBox.Text, StringComparison.InvariantCultureIgnoreCase)))
+                if ((mainForm.VotesGridView.Columns[i].Name.Equals(CandidateTextBox.Text, StringComparison.InvariantCultureIgnoreCase)) && 
+                    !mainForm.VotesGridView.Columns[i].Name.Equals(
+                    mainForm.VotesGridView.Columns[mainForm.VotesGridView.CurrentCell.ColumnIndex].Name, StringComparison.InvariantCultureIgnoreCase))
                 {
                     found = true;
                 }
             }
 
-            // If the conditions are met, adds the candidate to the list and grid view
+            // If the conditions are met, edits the candidate
             if (found == false && CandidateTextBox.Text != "")
             {
-                mainForm.VotesGridView.Columns.Add(CandidateTextBox.Text, CandidateTextBox.Text);
+                mainForm.VotesGridView.Columns[mainForm.VotesGridView.CurrentCell.ColumnIndex].HeaderText = CandidateTextBox.Text;
+                mainForm.VotesGridView.Columns[mainForm.VotesGridView.CurrentCell.ColumnIndex].Name = CandidateTextBox.Text;
+
                 this.Hide();
             }
 
@@ -65,9 +72,8 @@ namespace PreferentialVoting
         /// </summary>
         /// <param name="sender">The handle to the button</param>
         /// <param name="e">The extra messages</param>
-        private void NewCandidate_Disposed(object sender, EventArgs e)
+        private void EditCandidate_Disposed(object sender, EventArgs e)
         {
-
             // Closes the current form
             this.Hide();
         }

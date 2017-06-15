@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.NewCandidateButton = new System.Windows.Forms.Button();
             this.editCandidateButton = new System.Windows.Forms.Button();
             this.RemoveCandidateButton = new System.Windows.Forms.Button();
@@ -96,16 +96,16 @@
             // 
             // ResultsChart
             // 
-            chartArea11.Name = "ChartArea1";
-            this.ResultsChart.ChartAreas.Add(chartArea11);
-            legend11.Name = "Legend1";
-            this.ResultsChart.Legends.Add(legend11);
+            chartArea12.Name = "ChartArea1";
+            this.ResultsChart.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            this.ResultsChart.Legends.Add(legend12);
             this.ResultsChart.Location = new System.Drawing.Point(17, 76);
             this.ResultsChart.Name = "ResultsChart";
-            series11.ChartArea = "ChartArea1";
-            series11.Legend = "Legend1";
-            series11.Name = "Series1";
-            this.ResultsChart.Series.Add(series11);
+            series12.ChartArea = "ChartArea1";
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            this.ResultsChart.Series.Add(series12);
             this.ResultsChart.Size = new System.Drawing.Size(598, 147);
             this.ResultsChart.TabIndex = 5;
             this.ResultsChart.Text = "chart1";
@@ -187,6 +187,7 @@
             this.ResetVoteButton.TabIndex = 10;
             this.ResetVoteButton.Text = "Reset All";
             this.ResetVoteButton.UseVisualStyleBackColor = true;
+            this.ResetVoteButton.Click += new System.EventHandler(this.ResetVoteButton_Click);
             // 
             // HeadingHeadingLabel
             // 
