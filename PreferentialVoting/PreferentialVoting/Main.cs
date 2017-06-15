@@ -27,9 +27,10 @@ namespace PreferentialVoting
             
             allVotes = new VotesList();
             candidates = new List<string>();
-            VotesGridView.Columns.Add("Chocolate", "Chocolate");
-            VotesGridView.Columns.Add("Ice-Cream", "Ice-Cream");
-            VotesGridView.Columns.Add("Chips", "Chips");
+           // VotesGridView.Columns.Add("Chocolate", "Chocolate");
+           // VotesGridView.Columns.Add("Ice-Cream", "Ice-Cream");
+           // VotesGridView.Columns.Add("Chips", "Chips");
+
          
             /*
             vote.Add("Ice-Cream", 3);
@@ -130,6 +131,60 @@ namespace PreferentialVoting
         {
             NewCandidate newCandidate = new NewCandidate(this);
             newCandidate.Show();
+        }
+
+        /// <summary>
+        /// Removes a selected candidate from the gridView
+        /// </summary>
+        /// <param name="sender">The handle to the button</param>
+        /// <param name="e">The extra messages</param>
+        private void RemoveCandidateButton_Click(object sender, EventArgs e)
+        {
+
+            // Checks if a part has been selected then removes it from the gridView and the candidates list
+            if (this.VotesGridView.SelectedColumns.Count > 0)
+            {
+                candidates.RemoveAt(this.VotesGridView.CurrentCell.ColumnIndex);
+                this.VotesGridView.Columns.RemoveAt(this.VotesGridView.CurrentCell.ColumnIndex);
+
+            }
+
+            // User is informed to select a candidate first, before deleting
+            else
+            {
+                MessageBox.Show("You need to select a column first in order to delete it");
+            }
+        }
+
+        /// <summary>
+        /// Changes the gridView to select an entire column by clicking on the header
+        /// </summary>
+        /// <param name="sender">The handle to the column</param>
+        /// <param name="e">The extra messages</param>
+        private void VotesGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            this.VotesGridView.SelectionMode = DataGridViewSelectionMode.ColumnHeaderSelect;
+        }
+
+        /// <summary>
+        /// When a column is added, the header when selected won't automatically sort the data
+        /// </summary>
+        /// <param name="sender">The handle to the column</param>
+        /// <param name="e">The extra messages</param>
+        private void VotesGridView_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
+        {
+            this.VotesGridView.Columns[e.Column.Index].SortMode = DataGridViewColumnSortMode.NotSortable;
+        }
+
+        /// <summary>
+        /// Changes the gridView to select an entire row by clicking on the header
+        /// </summary>
+        /// <param name="sender">The handle to the row</param>
+        /// <param name="e">The extra messages</param>
+        private void VotesGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            this.VotesGridView.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
         }
 
         

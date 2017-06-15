@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.NewCandidateButton = new System.Windows.Forms.Button();
             this.editCandidateButton = new System.Windows.Forms.Button();
             this.RemoveCandidateButton = new System.Windows.Forms.Button();
@@ -81,6 +81,7 @@
             this.RemoveCandidateButton.TabIndex = 2;
             this.RemoveCandidateButton.Text = "Remove Candidate";
             this.RemoveCandidateButton.UseVisualStyleBackColor = true;
+            this.RemoveCandidateButton.Click += new System.EventHandler(this.RemoveCandidateButton_Click);
             // 
             // ImportCSVButton
             // 
@@ -94,16 +95,16 @@
             // 
             // ResultsChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.ResultsChart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.ResultsChart.Legends.Add(legend3);
+            chartArea10.Name = "ChartArea1";
+            this.ResultsChart.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            this.ResultsChart.Legends.Add(legend10);
             this.ResultsChart.Location = new System.Drawing.Point(17, 76);
             this.ResultsChart.Name = "ResultsChart";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.ResultsChart.Series.Add(series3);
+            series10.ChartArea = "ChartArea1";
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            this.ResultsChart.Series.Add(series10);
             this.ResultsChart.Size = new System.Drawing.Size(598, 147);
             this.ResultsChart.TabIndex = 5;
             this.ResultsChart.Text = "chart1";
@@ -213,9 +214,13 @@
             // 
             this.VotesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.VotesGridView.Location = new System.Drawing.Point(21, 48);
+            this.VotesGridView.MultiSelect = false;
             this.VotesGridView.Name = "VotesGridView";
             this.VotesGridView.Size = new System.Drawing.Size(594, 199);
             this.VotesGridView.TabIndex = 4;
+            this.VotesGridView.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.VotesGridView_ColumnAdded);
+            this.VotesGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.VotesGridView_ColumnHeaderMouseClick);
+            this.VotesGridView.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.VotesGridView_RowHeaderMouseClick);
             // 
             // WinnerLabel
             // 
