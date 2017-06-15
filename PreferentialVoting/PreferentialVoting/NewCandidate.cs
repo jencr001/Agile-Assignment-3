@@ -37,20 +37,25 @@ namespace PreferentialVoting
             Boolean found = false;  // Whether the value is contained in the list
 
             // Goes through the list and changes the found variable if the candidate is already in the list
-            for (int i = 0; i < mainForm.Candidates.Count; i++)
+            for (int i = 0; i < mainForm.VotesGridView.Columns.Count; i++)
             {
-                if ((mainForm.Candidates[i].Equals(CandidateTextBox.Text, StringComparison.InvariantCultureIgnoreCase)))
+                if ((mainForm.VotesGridView.Columns[i].Name.Equals(CandidateTextBox.Text, StringComparison.InvariantCultureIgnoreCase)))
                 {
                     found = true;
                 }
             }
 
             // If the conditions are met, adds the candidate to the list and grid view
-            if (found == false && CandidateTextBox.Text != "")
+            if (found == false)
             {
-                mainForm.Candidates.Add(CandidateTextBox.Text);
                 mainForm.VotesGridView.Columns.Add(CandidateTextBox.Text, CandidateTextBox.Text);
                 this.Hide();
+            }
+
+            // If the candidate already exists
+            else
+            {
+                MessageBox.Show("Candidate already exists!", "Error");
             }
         }
 

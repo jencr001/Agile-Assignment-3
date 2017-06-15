@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace PreferentialVoting.Classes
 {
@@ -43,48 +44,59 @@ namespace PreferentialVoting.Classes
                     this.Remove(this[i]);
                 }
             }
-            int highestResult = 0;
 
-            calculateRound();
-            highestResult = results.Values.Max();
-
-            while (highestResult < (majority))
+            if (numberOfInvalidVotes != this.Count())
             {
-                int lowestResult = results.Values.Min();
-                List<string> losers = new List<string>();
-                foreach (KeyValuePair<string, int> result in results)
-                {
-                    if (result.Value == lowestResult)
-                    {
-                        losers.Add(result.Key);
-                    }
-                    
-                }
-                Random rnd = new Random();
-                int index = rnd.Next(losers.Count);
-                foreach (Vote vote in this)
-                {
-                    vote.redistrbuteCandidate(losers[index]);
-                }
-                candidates.Remove(losers[index]);
-                results.Remove(losers[index]);
 
+                int highestResult = 0;
 
                 calculateRound();
                 highestResult = results.Values.Max();
-                if (candidates.Count == 2 && (results.Values.Min() == results.Values.Max()))
+
+                while (highestResult < (majority))
                 {
-                    finalTie = true;
-                    break;
+                    int lowestResult = results.Values.Min();
+                    List<string> losers = new List<string>();
+                    foreach (KeyValuePair<string, int> result in results)
+                    {
+                        if (result.Value == lowestResult)
+                        {
+                            losers.Add(result.Key);
+                        }
+
+                    }
+                    Random rnd = new Random();
+                    int index = rnd.Next(losers.Count);
+                    foreach (Vote vote in this)
+                    {
+                        vote.redistrbuteCandidate(losers[index]);
+                    }
+                    candidates.Remove(losers[index]);
+                    results.Remove(losers[index]);
+
+
+                    calculateRound();
+                    highestResult = results.Values.Max();
+                    if (candidates.Count == 2 && (results.Values.Min() == results.Values.Max()))
+                    {
+                        finalTie = true;
+                        break;
+                    }
                 }
+
+                // Get result
+                String asString = string.Join(";", results);
+                Console.WriteLine(asString);
+                Result finalResult = new Result();
+                finalResult.Results = results;
+                return finalResult;
             }
 
-            //get result
-            String asString = string.Join(";", results);
-            Console.WriteLine(asString);
-            Result finalResult = new Result();
-            finalResult.Results = results;
-            return finalResult;
+            else
+            {
+                MessageBox.Show("None of the votes were valid!", "Error");
+                return null;
+            }
 
         }
 

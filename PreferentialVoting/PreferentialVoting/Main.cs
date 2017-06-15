@@ -15,12 +15,6 @@ namespace PreferentialVoting
         private VotesList allVotes;
         private List<string> candidates;
 
-        public List<string> Candidates
-        {
-            get { return candidates; }
-            set { candidates = value; }
-        }
-
         public Main()
         {
             InitializeComponent();
@@ -65,70 +59,85 @@ namespace PreferentialVoting
 
         private void CountVotesButton_Click(object sender, EventArgs e)
         {
-            allVotes = new VotesList();
-            candidates = new List<string>();
-            foreach (DataGridViewColumn col in VotesGridView.Columns)
+            if (this.VotesGridView.Columns.Count > 1)
             {
-                candidates.Add(col.Name);
-            }
-            for (int i = 0; i < VotesGridView.Rows.Count - 1; i++)
-            {
-                Vote vote = new Vote();
-                foreach (DataGridViewCell cell in VotesGridView.Rows[i].Cells) 
+                allVotes = new VotesList();
+                candidates = new List<string>();
+                foreach (DataGridViewColumn col in this.VotesGridView.Columns)
                 {
-                    if (cell.Value == null)
+                    candidates.Add(col.Name);
+                }
+                for (int i = 0; i < VotesGridView.Rows.Count - 1; i++)
+                {
+                    Vote vote = new Vote();
+                    foreach (DataGridViewCell cell in VotesGridView.Rows[i].Cells)
                     {
-                        vote.Add(VotesGridView.Columns[cell.ColumnIndex].Name, -1);
-                    }
-                    else
-                    {
-                        int n;
-
-                        if (int.TryParse(cell.Value.ToString(), out n))
+                        if (cell.Value == null)
                         {
-
-                            vote.Add(VotesGridView.Columns[cell.ColumnIndex].Name, n);
+                            vote.Add(VotesGridView.Columns[cell.ColumnIndex].Name, -1);
                         }
                         else
                         {
-                            MessageBox.Show("Value must be a number");
-                            return;
+                            int n;
+
+                            if (int.TryParse(cell.Value.ToString(), out n))
+                            {
+
+                                vote.Add(VotesGridView.Columns[cell.ColumnIndex].Name, n);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Value must be a number");
+                                return;
+                            }
                         }
                     }
+                    allVotes.Add(vote);
                 }
-                allVotes.Add(vote);
+
+                Result finalResult = allVotes.calculateResult(candidates);
+
+                string winnerText = "";
+
+                if (finalResult != null)
+                {
+
+                    if (finalResult.Winners.Count == 1)
+                    {
+                        winnerText = finalResult.Winners[0];
+                    }
+                    else
+                    {
+                        for (int i = 0; i < finalResult.Winners.Count; i++)
+                        {
+
+                            if (i == finalResult.Winners.Count - 1)
+                            {
+                                winnerText += finalResult.Winners[i] + " tie";
+                            }
+                            else
+                            {
+                                winnerText += finalResult.Winners[i] + " and ";
+                            }
+                        }
+
+                    }
+                }
+                WinnerLabel.Text = winnerText;
+
             }
-            
-            Result finalResult = allVotes.calculateResult(candidates);
-            
-            string winnerText = "";
-            
-            if (finalResult.Winners.Count == 1)
-            {
-                winnerText = finalResult.Winners[0];
-            }
+
             else
             {
-                for (int i = 0; i < finalResult.Winners.Count; i++)
-                {
-                    
-                    if (i == finalResult.Winners.Count - 1)
-                    {
-                        winnerText += finalResult.Winners[i] + " tie";
-                    }
-                    else 
-                    {
-                        winnerText += finalResult.Winners[i] + " and ";
-                    }
-                }
-                
+                MessageBox.Show("Must have at least 2 candidates", "Error");
             }
-            WinnerLabel.Text = winnerText;
-            
         }
 
         private void NewCandidateButton_Click(object sender, EventArgs e)
         {
+            // Stupid fix
+            this.VotesGridView.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+
             NewCandidate newCandidate = new NewCandidate(this);
             newCandidate.Show();
         }
@@ -141,10 +150,9 @@ namespace PreferentialVoting
         private void RemoveCandidateButton_Click(object sender, EventArgs e)
         {
 
-            // Checks if a part has been selected then removes it from the gridView and the candidates list
+            // Checks if a part has been selected then removes it from the gridView
             if (this.VotesGridView.SelectedColumns.Count > 0)
             {
-                candidates.RemoveAt(this.VotesGridView.CurrentCell.ColumnIndex);
                 this.VotesGridView.Columns.RemoveAt(this.VotesGridView.CurrentCell.ColumnIndex);
 
             }
@@ -185,6 +193,11 @@ namespace PreferentialVoting
         private void VotesGridView_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             this.VotesGridView.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+        }
+
+        private void editCandidateButton_Click(object sender, EventArgs e)
+        {
+
         }
 
         

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.NewCandidateButton = new System.Windows.Forms.Button();
             this.editCandidateButton = new System.Windows.Forms.Button();
             this.RemoveCandidateButton = new System.Windows.Forms.Button();
@@ -72,6 +72,7 @@
             this.editCandidateButton.TabIndex = 1;
             this.editCandidateButton.Text = "Edit Candidate";
             this.editCandidateButton.UseVisualStyleBackColor = true;
+            this.editCandidateButton.Click += new System.EventHandler(this.editCandidateButton_Click);
             // 
             // RemoveCandidateButton
             // 
@@ -95,16 +96,16 @@
             // 
             // ResultsChart
             // 
-            chartArea10.Name = "ChartArea1";
-            this.ResultsChart.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            this.ResultsChart.Legends.Add(legend10);
+            chartArea11.Name = "ChartArea1";
+            this.ResultsChart.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            this.ResultsChart.Legends.Add(legend11);
             this.ResultsChart.Location = new System.Drawing.Point(17, 76);
             this.ResultsChart.Name = "ResultsChart";
-            series10.ChartArea = "ChartArea1";
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            this.ResultsChart.Series.Add(series10);
+            series11.ChartArea = "ChartArea1";
+            series11.Legend = "Legend1";
+            series11.Name = "Series1";
+            this.ResultsChart.Series.Add(series11);
             this.ResultsChart.Size = new System.Drawing.Size(598, 147);
             this.ResultsChart.TabIndex = 5;
             this.ResultsChart.Text = "chart1";
