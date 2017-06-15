@@ -12,9 +12,15 @@ namespace PreferentialVoting
 {
     public partial class Main : Form
     {
-        //Made a change!!
         private VotesList allVotes;
         private List<string> candidates;
+
+        public List<string> Candidates
+        {
+            get { return candidates; }
+            set { candidates = value; }
+        }
+
         public Main()
         {
             InitializeComponent();
@@ -118,6 +124,12 @@ namespace PreferentialVoting
             }
             WinnerLabel.Text = winnerText;
             
+        }
+
+        private void NewCandidateButton_Click(object sender, EventArgs e)
+        {
+            NewCandidate newCandidate = new NewCandidate(this);
+            newCandidate.Show();
         }
 
         
