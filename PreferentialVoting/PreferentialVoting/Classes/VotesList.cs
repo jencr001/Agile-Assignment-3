@@ -6,6 +6,10 @@ using System.Windows.Forms;
 
 namespace PreferentialVoting.Classes
 {
+
+    /// <summary>
+    /// Class that holds the votes as a list
+    /// </summary>
     class VotesList : List<Vote>
     {
         private Dictionary<string, int> results = new Dictionary<string, int>();

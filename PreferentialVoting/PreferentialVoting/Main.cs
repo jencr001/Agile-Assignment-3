@@ -10,6 +10,9 @@ using PreferentialVoting.Classes;
 
 namespace PreferentialVoting
 {
+    /// <summary>
+    /// Class that allows for the user to interact with the application
+    /// </summary>
     public partial class Main : Form
     {
         private VotesList allVotes;

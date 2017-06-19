@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PreferentialVoting.Classes
 {
+    /// <summary>
+    /// Class that stores the result of the vote count
+    /// </summary>
     class Result
     {
         private Dictionary<string, int> results = new Dictionary<string, int>();

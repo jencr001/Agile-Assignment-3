@@ -9,6 +9,10 @@ using System.Windows.Forms;
 
 namespace PreferentialVoting
 {
+
+    /// <summary>
+    /// Class that adds a candidate
+    /// </summary>
     public partial class NewCandidate : Form
     {
 

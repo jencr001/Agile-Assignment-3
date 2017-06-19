@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace PreferentialVoting
 {
+    /// <summary>
+    /// Class that edits a candidate
+    /// </summary>
     public partial class EditCandidate : Form
     {
         private Main mainForm;     // An instance of the MainForm class

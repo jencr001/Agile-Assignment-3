@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PreferentialVoting.Classes
 {
+    /// <summary>
+    /// Class that one vote 
+    /// </summary>
     class Vote : Dictionary<string, int>
     {
         private int currentPreferenceNumber;
