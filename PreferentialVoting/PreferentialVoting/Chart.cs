@@ -33,7 +33,7 @@ namespace PreferentialVoting
             // The margins are to give some space rather than drawing right on the edge of the component.
             int leftMargin = 20;
             int rightMargin = 20;
-            int topMargin = 20;
+            int topMargin = 40;
             int bottomMargin = 20;
 
             // This are the maximum practical height and width, after we allow for some margins to make it neat.
@@ -44,7 +44,7 @@ namespace PreferentialVoting
             g.Clear(Color.WhiteSmoke);
 
             // Created this as a method so we can reuse it in the print functions.
-            this.generateGraph(result.FinalResults, g, leftMargin, topMargin, maxHeight, maxWidth);
+            this.generateGraph(result.Rounds[0], g, leftMargin, topMargin, maxHeight, maxWidth);
 
             // Just to repaint any additional features.
             base.OnPaint(e);
@@ -68,8 +68,8 @@ namespace PreferentialVoting
 
                 // Here we could set different colours for different columns, which is
                 // why I'm setting them in the loop.
-                Pen currentPen = new Pen(Color.Brown);
-                Brush currentBrush = new SolidBrush(Color.BurlyWood);
+                Pen currentPen = new Pen(Color.RoyalBlue);
+                Brush currentBrush = new SolidBrush(Color.SkyBlue);
                 Brush textBrush = new SolidBrush(Color.Black);
 
                 // Calculate teh height of this particular column.
@@ -79,16 +79,30 @@ namespace PreferentialVoting
                 int y = (int)(topMargin + maxHeight - columnHeight);
                 int x = (int)(leftMargin + (columnWidth * columnNumber));
 
-                Font font = new Font("Arial", 14);
+                Font font = new Font("Arial", 12);
 
-                RectangleF rect = new RectangleF(x, y, (int)columnWidth, columnHeight);
+                
+                if (columnHeight == 0)
+                {
+                    RectangleF rect = new RectangleF(x, y, (int)columnWidth, 100);
+                    // Draw a filled rectangle for the column
+                    g.FillRectangle(new SolidBrush(SystemColors.Control), rect);
+                    // Draw a border around it to make it look pretty
+                    g.DrawRectangle(new Pen(Color.White), Rectangle.Round(rect));
+                    g.DrawString(result.Key + " " + result.Value, font, textBrush, rect);
+                }
+                else
+                {
+                    RectangleF rect = new RectangleF(x, y, (int)columnWidth, columnHeight);
+                    // Draw a filled rectangle for the column
+                    g.FillRectangle(currentBrush, rect);
+                    // Draw a border around it to make it look pretty
+                    g.DrawRectangle(currentPen, Rectangle.Round(rect));
+                    g.DrawString(result.Key + " " + result.Value, font, textBrush, rect);
+                }
 
-                // Draw a filled rectangle for the column
-                g.FillRectangle(currentBrush, rect);
-                // Draw a border around it to make it look pretty
-                g.DrawRectangle(currentPen, Rectangle.Round(rect));
 
-                g.DrawString(result.Key + " " + result.Value, font, textBrush, rect);
+                
 
                 columnNumber++;
             }

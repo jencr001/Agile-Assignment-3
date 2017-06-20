@@ -45,9 +45,6 @@ namespace PreferentialVoting.Classes
             }
             set { winners = value; }
         }
-
-
-
        
 
         public Dictionary<string, int> FinalResults

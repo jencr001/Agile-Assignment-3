@@ -68,7 +68,7 @@ namespace PreferentialVoting.Classes
             }
             results.NumberOfInvalidVotes = numberOfInvalidVotes;
 
-            if (numberOfInvalidVotes != this.Count())
+            if (numberOfInvalidVotes < this.Count)
             {
 
                 int highestResult = 0;
@@ -94,9 +94,9 @@ namespace PreferentialVoting.Classes
                     {
                         vote.redistrbuteCandidate(losers[index]);
                     }
-                    //candidates.Remove(losers[index]);
-                    //results.FinalResults.Remove(losers[index]);
-                    results.FinalResults[losers[index]] = 0;
+                    candidates.Remove(losers[index]);
+                    results.FinalResults.Remove(losers[index]);
+
 
                     calculateRound();
                     highestResult = results.FinalResults.Values.Max();

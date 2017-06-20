@@ -26,34 +26,6 @@ namespace PreferentialVoting
             
             allVotes = new VotesList();
             candidates = new List<string>();
-            
-           // VotesGridView.Columns.Add("Chocolate", "Chocolate");
-           // VotesGridView.Columns.Add("Ice-Cream", "Ice-Cream");
-           // VotesGridView.Columns.Add("Chips", "Chips");
-
-         
-            /*
-            vote.Add("Ice-Cream", 3);
-            vote.Add("Chocolate", 1);
-            
-            vote.Add("Chips", 2);
-            allVotes.Add(vote);
-             */
-           // foreach (string c in candidates) {
-                
-            //}
-            /*
-            foreach (Dictionary<string, int> v in allVotes)
-            {
-                DataGridViewRow row = (DataGridViewRow)VotesGridView.Rows[0].Clone();
-   
-                foreach(KeyValuePair<string, int> entry in v) {
-                    row.Cells[candidates.IndexOf(entry.Key)].Value = entry.Value;
-                 
-                }
-                VotesGridView.Rows.Add(row);
-            }*/
-
         }
 
 
@@ -188,40 +160,42 @@ namespace PreferentialVoting
                 }
 
                 Result finalResult = allVotes.calculateResult(candidates);
-           
-                
 
-                this.InvalidVotesLabel.Text = "" + finalResult.NumberOfInvalidVotes;
-
-                string winnerText = "";
 
                 if (finalResult != null)
                 {
+                    this.InvalidVotesLabel.Text = "" + finalResult.NumberOfInvalidVotes;
 
-                    if (finalResult.Winners.Count == 1)
+                    string winnerText = "";
+
+                    if (finalResult != null)
                     {
-                        winnerText = finalResult.Winners[0];
-                    }
-                    else
-                    {
-                        for (int i = 0; i < finalResult.Winners.Count; i++)
+
+                        if (finalResult.Winners.Count == 1)
                         {
-
-                            if (i == finalResult.Winners.Count - 1)
-                            {
-                                winnerText += finalResult.Winners[i] + " tie";
-                            }
-                            else
-                            {
-                                winnerText += finalResult.Winners[i] + " and ";
-                            }
+                            winnerText = finalResult.Winners[0];
                         }
+                        else
+                        {
+                            for (int i = 0; i < finalResult.Winners.Count; i++)
+                            {
 
+                                if (i == finalResult.Winners.Count - 1)
+                                {
+                                    winnerText += finalResult.Winners[i] + " tie";
+                                }
+                                else
+                                {
+                                    winnerText += finalResult.Winners[i] + " and ";
+                                }
+                            }
+
+                        }
                     }
+                    WinnerLabel.Text = winnerText;
+                    Chart chart = new Chart(finalResult);
+                    chart.ShowDialog();
                 }
-                WinnerLabel.Text = winnerText;
-                Chart chart = new Chart(finalResult);
-                chart.ShowDialog();
             }
 
             else
@@ -365,28 +339,40 @@ namespace PreferentialVoting
                         {
                             round++;
                             csv.Append(round + ", ");
+
+                            int index = 0;
+                            Console.WriteLine("Round Count: " + rnd.Count);
+
                             foreach (KeyValuePair<string, int> entry in rnd)
                             {
-                                if (entry.Value == 0)
+
+                                while (candidates[index] != entry.Key)
                                 {
                                     csv.Append("P, ");
+                                    index++;
                                 }
-                                else
+                                if (candidates[index] == entry.Key)
                                 {
                                     csv.Append(entry.Value + ", ");
                                 }
-                            }
-                            csv.AppendLine("");
-                        }
+   
 
-                        // Goes through each part and adds the information to the StringBuilder
-                        //foreach (Part part in robot.partsList)
-                        //{
-                          //csv.AppendLine("\"" + part.Name + "\", " + part.Number
-                        //    + ", " + part.UnitWeight + ", " + part.UnitCost
-                        //  + ", " + part.Category + ", " + part.Supplier
-                        //+ ", " + part.TotalWeight() + ", " + part.TotalCost());
-                        // }
+                                index++;
+                            }
+
+                            Console.WriteLine("Index: " + index);
+                            Console.WriteLine("Cs: " + candidates.Count);
+                            while (index < candidates.Count)
+                            {
+                                csv.Append("P, ");
+                                index++;
+                            }
+
+                           
+
+                                csv.AppendLine("");
+                        
+                        }
 
                         // Writes to the csv and informs the user
                         File.WriteAllText(saveFileDialog.FileName, csv.ToString());
