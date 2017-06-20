@@ -134,9 +134,9 @@
             this.InvalidVotesLabel.AutoSize = true;
             this.InvalidVotesLabel.Location = new System.Drawing.Point(121, 81);
             this.InvalidVotesLabel.Name = "InvalidVotesLabel";
-            this.InvalidVotesLabel.Size = new System.Drawing.Size(43, 13);
+            this.InvalidVotesLabel.Size = new System.Drawing.Size(13, 13);
             this.InvalidVotesLabel.TabIndex = 7;
-            this.InvalidVotesLabel.Text = "000000";
+            this.InvalidVotesLabel.Text = "0";
             // 
             // InvalidVotesHeadingLabel
             // 
@@ -155,6 +155,7 @@
             this.ExportCSVButton.TabIndex = 8;
             this.ExportCSVButton.Text = "Export Results as CSV";
             this.ExportCSVButton.UseVisualStyleBackColor = true;
+            this.ExportCSVButton.Click += new System.EventHandler(this.ExportCSVButton_Click);
             // 
             // ResetVoteButton
             // 

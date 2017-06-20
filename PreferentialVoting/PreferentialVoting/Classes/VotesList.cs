@@ -19,6 +19,18 @@ namespace PreferentialVoting.Classes
         private int numberOfInvalidVotes;
         private Result results = new Result();
 
+        public List<string> Candidates
+        {
+            get { return candidates; }
+            set { candidates = value; }
+        }
+
+        public Result Results
+        {
+            get { return results; }
+            set { results = value; }
+        }
+
         /*  public VotesList(VotesList other)
           {
               this.results = other.results;
@@ -28,9 +40,10 @@ namespace PreferentialVoting.Classes
               this.numberOfVotes = other.numberOfVotes;
           }*/
         public VotesList() { }
+
         public Result calculateResult(List<string> _candidates)
         {
-            //gets the candidate name and number of votes
+            // Gets the candidate name and number of votes
             candidates = _candidates;
             numberOfVotes = this.Count;
             //works out what the majority is
@@ -82,8 +95,8 @@ namespace PreferentialVoting.Classes
                         vote.redistrbuteCandidate(losers[index]);
                     }
                     candidates.Remove(losers[index]);
-                    results.FinalResults.Remove(losers[index]);
-
+                    //results.FinalResults.Remove(losers[index]);
+                    results.FinalResults[losers[index]] = 0;
 
                     calculateRound();
                     highestResult = results.FinalResults.Values.Max();

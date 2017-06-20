@@ -326,9 +326,85 @@ namespace PreferentialVoting
             candidates = new List<string>();
             WinnerLabel.Text = "None";
             InvalidVotesLabel.Text = "0";
-           
-            // TODO: Clear chart somehow
 
+        }
+
+        private void ExportCSVButton_Click(object sender, EventArgs e)
+        {
+            if (candidates.Count > 0)
+            {
+
+                try
+                {
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();   // Creates a dialog to ask the user where the file is to be saved
+                    saveFileDialog.Filter = "CSV Files (*.csv)|*.csv";      // Can only use csv files
+                    saveFileDialog.DefaultExt = "csv";
+                    saveFileDialog.AddExtension = true;
+
+                    // Checks if the user didn't press cancel
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        StringBuilder csv = new StringBuilder();    // Contains the StringBuilder of the information for the csv
+
+                        // Column headings
+                        csv.Append("Round, ");
+
+
+                        candidates = new List<string>();
+
+                        foreach (DataGridViewColumn col in this.VotesGridView.Columns)
+                        {
+                            csv.Append(col.Name + ", ");
+                            candidates.Add(col.Name);
+                        }
+
+                        csv.AppendLine("");
+                        int round = 0;
+
+                        foreach (Dictionary<string, int> rnd in allVotes.Results.Rounds)
+                        {
+                            round++;
+                            csv.Append(round + ", ");
+                            foreach (KeyValuePair<string, int> entry in rnd)
+                            {
+                                Console.WriteLine(entry.Key);
+                                if (entry.Value == 0)
+                                {
+                                    csv.Append("P, ");
+                                }
+                                else
+                                {
+                                    csv.Append(entry.Value + ", ");
+                                }
+                            }
+                            csv.AppendLine("");
+                        }
+
+                        // Goes through each part and adds the information to the StringBuilder
+                        //foreach (Part part in robot.partsList)
+                        //{
+                          //csv.AppendLine("\"" + part.Name + "\", " + part.Number
+                        //    + ", " + part.UnitWeight + ", " + part.UnitCost
+                        //  + ", " + part.Category + ", " + part.Supplier
+                        //+ ", " + part.TotalWeight() + ", " + part.TotalCost());
+                        // }
+
+                        // Writes to the csv and informs the user
+                        File.WriteAllText(saveFileDialog.FileName, csv.ToString());
+                        MessageBox.Show("CSV saved successfully");
+                    }
+                }
+                // Any problems with writing to the csv
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error when saving to csv. " + ex.Message);
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("Error", "No results to export");
+            }
         }
 
     }
