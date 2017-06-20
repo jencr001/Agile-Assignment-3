@@ -48,6 +48,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(689, 351);
             this.Controls.Add(this.PrintButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Chart";
             this.Text = "Initial Vote Chart";
             this.ResumeLayout(false);
