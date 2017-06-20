@@ -10,15 +10,22 @@ namespace PreferentialVoting.Classes
     /// </summary>
     class Result
     {
-        private Dictionary<string, int> results = new Dictionary<string, int>();
+        private Dictionary<string, int> finalResults = new Dictionary<string, int>();
         private List<string> winners;
+        private List<Dictionary<string, int>> rounds = new List<Dictionary<string, int>>();
+
+        public List<Dictionary<string, int>> Rounds
+        {
+            get { return rounds; }
+            set { rounds = value; }
+        }
 
         public List<string> Winners
         {
             get {
                 List<string> returnValue = new List<string>();
-                int highestValue = results.Values.Max();
-                foreach (KeyValuePair<string, int> entry in results)
+                int highestValue = finalResults.Values.Max();
+                foreach (KeyValuePair<string, int> entry in finalResults)
                 {
                     if (highestValue == entry.Value)
                     {
@@ -31,12 +38,14 @@ namespace PreferentialVoting.Classes
             set { winners = value; }
         }
 
+
+
        
 
-        public Dictionary<string, int> Results
+        public Dictionary<string, int> FinalResults
         {
-            get { return results; }
-            set { results = value; }
+            get { return finalResults; }
+            set { finalResults = value; }
         }
 
 

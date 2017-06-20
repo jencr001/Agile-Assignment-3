@@ -12,11 +12,12 @@ namespace PreferentialVoting.Classes
     /// </summary>
     class VotesList : List<Vote>
     {
-        private Dictionary<string, int> results = new Dictionary<string, int>();
+     //   private Dictionary<string, int> results = new Dictionary<string, int>();
         private List<string> candidates;
         private int majority;
         private int numberOfVotes;
         private int numberOfInvalidVotes;
+        private Result results = new Result();
 
         /*  public VotesList(VotesList other)
           {
@@ -29,14 +30,17 @@ namespace PreferentialVoting.Classes
         public VotesList() { }
         public Result calculateResult(List<string> _candidates)
         {
+            //gets the candidate name and number of votes
             candidates = _candidates;
             numberOfVotes = this.Count;
+            //works out what the majority is
             majority = numberOfVotes / 2 + 1;
             numberOfInvalidVotes = 0;
             bool finalTie = false;
+            //sets up the final results
             foreach (string candidate in candidates)
             {
-                results.Add(candidate, 0);
+                results.FinalResults.Add(candidate, 0);
             }
             for (int i = 0; i < this.Count; i++)
             {
@@ -55,13 +59,13 @@ namespace PreferentialVoting.Classes
                 int highestResult = 0;
 
                 calculateRound();
-                highestResult = results.Values.Max();
+                highestResult = results.FinalResults.Values.Max();
 
                 while (highestResult < (majority))
                 {
-                    int lowestResult = results.Values.Min();
+                    int lowestResult = results.FinalResults.Values.Min();
                     List<string> losers = new List<string>();
-                    foreach (KeyValuePair<string, int> result in results)
+                    foreach (KeyValuePair<string, int> result in results.FinalResults)
                     {
                         if (result.Value == lowestResult)
                         {
@@ -76,12 +80,12 @@ namespace PreferentialVoting.Classes
                         vote.redistrbuteCandidate(losers[index]);
                     }
                     candidates.Remove(losers[index]);
-                    results.Remove(losers[index]);
+                    results.FinalResults.Remove(losers[index]);
 
 
                     calculateRound();
-                    highestResult = results.Values.Max();
-                    if (candidates.Count == 2 && (results.Values.Min() == results.Values.Max()))
+                    highestResult = results.FinalResults.Values.Max();
+                    if (candidates.Count == 2 && (results.FinalResults.Values.Min() == results.FinalResults.Values.Max()))
                     {
                         finalTie = true;
                         break;
@@ -91,9 +95,8 @@ namespace PreferentialVoting.Classes
                 // Get result
                 String asString = string.Join(";", results);
                 Console.WriteLine(asString);
-                Result finalResult = new Result();
-                finalResult.Results = results;
-                return finalResult;
+               
+                return results;
             }
 
             else
@@ -106,10 +109,10 @@ namespace PreferentialVoting.Classes
 
         private void calculateRound()
         {
-            results.Clear();
+            results.FinalResults.Clear();
             foreach (string candidate in candidates)
             {
-                results.Add(candidate, 0);
+                results.FinalResults.Add(candidate, 0);
             }
             for (int i = 0; i < this.Count; i++)
             {
@@ -118,12 +121,13 @@ namespace PreferentialVoting.Classes
                         {
                             if (entry.Value == this[i].CurrentPreferenceNumber)
                             {
-                                results[entry.Key]++;
+                                results.FinalResults[entry.Key]++;
                             }
                         }
                     }
                 
             }
+            results.Rounds.Add(results.FinalResults);
         }
     }
 }
