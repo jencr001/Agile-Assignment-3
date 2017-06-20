@@ -127,7 +127,9 @@ namespace PreferentialVoting.Classes
                     }
                 
             }
-            results.Rounds.Add(results.FinalResults);
+            Dictionary<string, int> tmp = new Dictionary<string, int>(results.FinalResults);
+         
+            results.Rounds.Add(tmp);
         }
     }
 }

@@ -8,8 +8,10 @@ namespace PreferentialVoting.Classes
     /// <summary>
     /// Class that stores the result of the vote count
     /// </summary>
-    class Result
+    public class Result
     {
+
+
         private Dictionary<string, int> finalResults = new Dictionary<string, int>();
         private List<string> winners;
         private List<Dictionary<string, int>> rounds = new List<Dictionary<string, int>>();

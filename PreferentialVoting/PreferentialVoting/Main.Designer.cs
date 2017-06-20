@@ -28,27 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.NewCandidateButton = new System.Windows.Forms.Button();
             this.editCandidateButton = new System.Windows.Forms.Button();
             this.RemoveCandidateButton = new System.Windows.Forms.Button();
             this.ImportCSVButton = new System.Windows.Forms.Button();
-            this.ResultsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.CountVotesButton = new System.Windows.Forms.Button();
             this.ResultsGroupBox = new System.Windows.Forms.GroupBox();
+            this.WinnerLabel = new System.Windows.Forms.Label();
             this.WinnerHeadingLabel = new System.Windows.Forms.Label();
             this.InvalidVotesLabel = new System.Windows.Forms.Label();
             this.InvalidVotesHeadingLabel = new System.Windows.Forms.Label();
             this.ExportCSVButton = new System.Windows.Forms.Button();
-            this.PrintButton = new System.Windows.Forms.Button();
             this.ResetVoteButton = new System.Windows.Forms.Button();
             this.HeadingHeadingLabel = new System.Windows.Forms.Label();
             this.CandidateGroupBox = new System.Windows.Forms.GroupBox();
             this.VotesGridView = new System.Windows.Forms.DataGridView();
-            this.WinnerLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.ResultsChart)).BeginInit();
             this.ResultsGroupBox.SuspendLayout();
             this.CandidateGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VotesGridView)).BeginInit();
@@ -94,22 +88,6 @@
             this.ImportCSVButton.UseVisualStyleBackColor = true;
             this.ImportCSVButton.Click += new System.EventHandler(this.ImportCSVButton_Click);
             // 
-            // ResultsChart
-            // 
-            chartArea12.Name = "ChartArea1";
-            this.ResultsChart.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            this.ResultsChart.Legends.Add(legend12);
-            this.ResultsChart.Location = new System.Drawing.Point(17, 76);
-            this.ResultsChart.Name = "ResultsChart";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "Series1";
-            this.ResultsChart.Series.Add(series12);
-            this.ResultsChart.Size = new System.Drawing.Size(598, 147);
-            this.ResultsChart.TabIndex = 5;
-            this.ResultsChart.Text = "chart1";
-            // 
             // CountVotesButton
             // 
             this.CountVotesButton.Location = new System.Drawing.Point(273, 319);
@@ -126,13 +104,21 @@
             this.ResultsGroupBox.Controls.Add(this.WinnerHeadingLabel);
             this.ResultsGroupBox.Controls.Add(this.InvalidVotesLabel);
             this.ResultsGroupBox.Controls.Add(this.InvalidVotesHeadingLabel);
-            this.ResultsGroupBox.Controls.Add(this.ResultsChart);
             this.ResultsGroupBox.Location = new System.Drawing.Point(12, 366);
             this.ResultsGroupBox.Name = "ResultsGroupBox";
-            this.ResultsGroupBox.Size = new System.Drawing.Size(642, 268);
+            this.ResultsGroupBox.Size = new System.Drawing.Size(642, 139);
             this.ResultsGroupBox.TabIndex = 7;
             this.ResultsGroupBox.TabStop = false;
             this.ResultsGroupBox.Text = "Results";
+            // 
+            // WinnerLabel
+            // 
+            this.WinnerLabel.AutoSize = true;
+            this.WinnerLabel.Location = new System.Drawing.Point(214, 42);
+            this.WinnerLabel.Name = "WinnerLabel";
+            this.WinnerLabel.Size = new System.Drawing.Size(33, 13);
+            this.WinnerLabel.TabIndex = 9;
+            this.WinnerLabel.Text = "None";
             // 
             // WinnerHeadingLabel
             // 
@@ -146,7 +132,7 @@
             // InvalidVotesLabel
             // 
             this.InvalidVotesLabel.AutoSize = true;
-            this.InvalidVotesLabel.Location = new System.Drawing.Point(121, 243);
+            this.InvalidVotesLabel.Location = new System.Drawing.Point(121, 81);
             this.InvalidVotesLabel.Name = "InvalidVotesLabel";
             this.InvalidVotesLabel.Size = new System.Drawing.Size(43, 13);
             this.InvalidVotesLabel.TabIndex = 7;
@@ -155,7 +141,7 @@
             // InvalidVotesHeadingLabel
             // 
             this.InvalidVotesHeadingLabel.AutoSize = true;
-            this.InvalidVotesHeadingLabel.Location = new System.Drawing.Point(31, 243);
+            this.InvalidVotesHeadingLabel.Location = new System.Drawing.Point(31, 81);
             this.InvalidVotesHeadingLabel.Name = "InvalidVotesHeadingLabel";
             this.InvalidVotesHeadingLabel.Size = new System.Drawing.Size(71, 13);
             this.InvalidVotesHeadingLabel.TabIndex = 6;
@@ -163,21 +149,12 @@
             // 
             // ExportCSVButton
             // 
-            this.ExportCSVButton.Location = new System.Drawing.Point(390, 653);
+            this.ExportCSVButton.Location = new System.Drawing.Point(525, 511);
             this.ExportCSVButton.Name = "ExportCSVButton";
             this.ExportCSVButton.Size = new System.Drawing.Size(129, 23);
             this.ExportCSVButton.TabIndex = 8;
             this.ExportCSVButton.Text = "Export Results as CSV";
             this.ExportCSVButton.UseVisualStyleBackColor = true;
-            // 
-            // PrintButton
-            // 
-            this.PrintButton.Location = new System.Drawing.Point(525, 653);
-            this.PrintButton.Name = "PrintButton";
-            this.PrintButton.Size = new System.Drawing.Size(129, 23);
-            this.PrintButton.TabIndex = 9;
-            this.PrintButton.Text = "Print Detailed Report";
-            this.PrintButton.UseVisualStyleBackColor = true;
             // 
             // ResetVoteButton
             // 
@@ -224,30 +201,19 @@
             this.VotesGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.VotesGridView_ColumnHeaderMouseClick);
             this.VotesGridView.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.VotesGridView_RowHeaderMouseClick);
             // 
-            // WinnerLabel
-            // 
-            this.WinnerLabel.AutoSize = true;
-            this.WinnerLabel.Location = new System.Drawing.Point(214, 42);
-            this.WinnerLabel.Name = "WinnerLabel";
-            this.WinnerLabel.Size = new System.Drawing.Size(33, 13);
-            this.WinnerLabel.TabIndex = 9;
-            this.WinnerLabel.Text = "None";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 714);
+            this.ClientSize = new System.Drawing.Size(666, 552);
             this.Controls.Add(this.CandidateGroupBox);
             this.Controls.Add(this.HeadingHeadingLabel);
             this.Controls.Add(this.ResetVoteButton);
-            this.Controls.Add(this.PrintButton);
             this.Controls.Add(this.ExportCSVButton);
             this.Controls.Add(this.ResultsGroupBox);
             this.Controls.Add(this.CountVotesButton);
             this.Name = "Main";
             this.Text = "Preferential Voting";
-            ((System.ComponentModel.ISupportInitialize)(this.ResultsChart)).EndInit();
             this.ResultsGroupBox.ResumeLayout(false);
             this.ResultsGroupBox.PerformLayout();
             this.CandidateGroupBox.ResumeLayout(false);
@@ -263,14 +229,12 @@
         private System.Windows.Forms.Button editCandidateButton;
         private System.Windows.Forms.Button RemoveCandidateButton;
         private System.Windows.Forms.Button ImportCSVButton;
-        private System.Windows.Forms.DataVisualization.Charting.Chart ResultsChart;
         private System.Windows.Forms.Button CountVotesButton;
         private System.Windows.Forms.GroupBox ResultsGroupBox;
         private System.Windows.Forms.Label InvalidVotesLabel;
         private System.Windows.Forms.Label InvalidVotesHeadingLabel;
         private System.Windows.Forms.Label WinnerHeadingLabel;
         private System.Windows.Forms.Button ExportCSVButton;
-        private System.Windows.Forms.Button PrintButton;
         private System.Windows.Forms.Button ResetVoteButton;
         private System.Windows.Forms.Label HeadingHeadingLabel;
         private System.Windows.Forms.GroupBox CandidateGroupBox;

@@ -24,6 +24,7 @@ namespace PreferentialVoting
             
             allVotes = new VotesList();
             candidates = new List<string>();
+            
            // VotesGridView.Columns.Add("Chocolate", "Chocolate");
            // VotesGridView.Columns.Add("Ice-Cream", "Ice-Cream");
            // VotesGridView.Columns.Add("Chips", "Chips");
@@ -99,6 +100,9 @@ namespace PreferentialVoting
                 }
 
                 Result finalResult = allVotes.calculateResult(candidates);
+           
+                Chart chart = new Chart(finalResult);
+                chart.ShowDialog();
 
                 string winnerText = "";
 
@@ -135,6 +139,8 @@ namespace PreferentialVoting
                 MessageBox.Show("Must have at least 2 candidates", "Error");
             }
         }
+
+
 
         private void NewCandidateButton_Click(object sender, EventArgs e)
         {
