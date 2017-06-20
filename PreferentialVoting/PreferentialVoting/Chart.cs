@@ -83,7 +83,6 @@ namespace PreferentialVoting
                 
                 if (columnHeight == 0)
                 {
-                   
                     y = (int)(topMargin + maxHeight - 35);
                     RectangleF rect = new RectangleF(x, y, (int)columnWidth, 35);
                     // Draw a filled rectangle for the column
