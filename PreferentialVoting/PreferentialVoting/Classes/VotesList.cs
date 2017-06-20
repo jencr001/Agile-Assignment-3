@@ -94,7 +94,7 @@ namespace PreferentialVoting.Classes
                     {
                         vote.redistrbuteCandidate(losers[index]);
                     }
-                    candidates.Remove(losers[index]);
+                    //candidates.Remove(losers[index]);
                     //results.FinalResults.Remove(losers[index]);
                     results.FinalResults[losers[index]] = 0;
 

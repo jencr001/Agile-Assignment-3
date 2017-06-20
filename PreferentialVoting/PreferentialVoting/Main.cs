@@ -367,7 +367,6 @@ namespace PreferentialVoting
                             csv.Append(round + ", ");
                             foreach (KeyValuePair<string, int> entry in rnd)
                             {
-                                Console.WriteLine(entry.Key);
                                 if (entry.Value == 0)
                                 {
                                     csv.Append("P, ");
