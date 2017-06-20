@@ -50,8 +50,10 @@ namespace PreferentialVoting.Classes
                     majority = numberOfVotes / 2 + 1;
                     numberOfInvalidVotes++;
                     this.Remove(this[i]);
+                   
                 }
             }
+            results.NumberOfInvalidVotes = numberOfInvalidVotes;
 
             if (numberOfInvalidVotes != this.Count())
             {

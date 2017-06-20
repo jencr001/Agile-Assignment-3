@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using PreferentialVoting.Classes;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace PreferentialVoting
 {
@@ -58,7 +60,93 @@ namespace PreferentialVoting
 
         private void ImportCSVButton_Click(object sender, EventArgs e)
         {
+            // Tries to load a file that the user selects
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();    // Creates a dialog to ask the user which file to load
 
+                // Checks if the user didn't press cancel
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filename = openFileDialog.FileName;   // Stores the name of the file to load
+
+                    // Checks if the name of the file is valid and then opens a stream  
+                    if (File.Exists(filename))
+                    {
+                        FileStream stream = new FileStream(filename, FileMode.Open);    // Creates a new filestream to write data to
+                        List<string> lines = new List<string>();
+                        try
+                        {
+                              
+                            StreamReader sr = new StreamReader(stream);
+
+                            // read data in line by line
+                            while ((sr.ReadLine()) != null)
+                            {
+                                Console.WriteLine(lines);
+                                lines.Add(sr.ReadLine());
+                            }
+                            sr.Close();
+                            // Result of the stream
+
+
+                            bool first = true;
+                            string[] headers;
+                            foreach (string line in lines)
+                            {
+                                if (first)
+                                {
+                                    headers = line.Split(',');
+                                    foreach (string h in headers)
+                                    {
+                                        bool found = false;
+                                        for (int i = 0; i < VotesGridView.Columns.Count; i++)
+                                        {
+                                            if ((VotesGridView.Columns[i].Name.Equals(h, StringComparison.InvariantCultureIgnoreCase)))
+                                            {
+                                                found = true;
+                                                break;
+                                            }
+                                        }
+                                        if (!found)
+                                        {
+                                            VotesGridView.Columns.Add(h, h);
+                                        }
+
+
+                                    }
+                                    first = false;
+                                }
+                                    else
+                                {
+                                      
+                                }
+                            }
+                         
+                            // Checks for errors
+                        }
+                        catch (ArgumentNullException ex)
+                        {
+                            MessageBox.Show("Error: File can't be accessed");
+
+                        }
+                        // Closes the stream
+                        finally
+                        {
+                            stream.Close();
+                        }
+                    }
+                    
+                }
+                // If there is an error, display it
+                else
+                {
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: Not correct type of file");
+            }
         }
 
         private void CountVotesButton_Click(object sender, EventArgs e)
@@ -101,8 +189,9 @@ namespace PreferentialVoting
 
                 Result finalResult = allVotes.calculateResult(candidates);
            
-                Chart chart = new Chart(finalResult);
-                chart.ShowDialog();
+                
+
+                this.InvalidVotesLabel.Text = "" + finalResult.NumberOfInvalidVotes;
 
                 string winnerText = "";
 
@@ -131,13 +220,15 @@ namespace PreferentialVoting
                     }
                 }
                 WinnerLabel.Text = winnerText;
-
+                Chart chart = new Chart(finalResult);
+                chart.ShowDialog();
             }
 
             else
             {
                 MessageBox.Show("Must have at least 2 candidates", "Error");
             }
+
         }
 
 
