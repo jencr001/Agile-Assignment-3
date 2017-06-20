@@ -79,17 +79,18 @@ namespace PreferentialVoting
                 int y = (int)(topMargin + maxHeight - columnHeight);
                 int x = (int)(leftMargin + (columnWidth * columnNumber));
 
-                Font font = new Font("Arial", 12);
-
+                Font font = new Font("Arial", 10);
                 
                 if (columnHeight == 0)
                 {
-                    RectangleF rect = new RectangleF(x, y, (int)columnWidth, 100);
+                   
+                    y = (int)(topMargin + maxHeight - 35);
+                    RectangleF rect = new RectangleF(x, y, (int)columnWidth, 35);
                     // Draw a filled rectangle for the column
-                    g.FillRectangle(new SolidBrush(SystemColors.Control), rect);
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(0, Color.Red)), rect);
                     // Draw a border around it to make it look pretty
-                    g.DrawRectangle(new Pen(Color.White), Rectangle.Round(rect));
-                    g.DrawString(result.Key + " " + result.Value, font, textBrush, rect);
+                    g.DrawRectangle(new Pen(Color.FromArgb(0, Color.Red)), Rectangle.Round(rect));
+                    g.DrawString(result.Key + "\n" + result.Value, font, textBrush, rect);
                 }
                 else
                 {
@@ -98,11 +99,8 @@ namespace PreferentialVoting
                     g.FillRectangle(currentBrush, rect);
                     // Draw a border around it to make it look pretty
                     g.DrawRectangle(currentPen, Rectangle.Round(rect));
-                    g.DrawString(result.Key + " " + result.Value, font, textBrush, rect);
+                    g.DrawString(result.Key + "\n" + result.Value, font, textBrush, rect);
                 }
-
-
-                
 
                 columnNumber++;
             }

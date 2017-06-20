@@ -213,7 +213,10 @@
             this.Controls.Add(this.ExportCSVButton);
             this.Controls.Add(this.ResultsGroupBox);
             this.Controls.Add(this.CountVotesButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Preferential Voting";
             this.ResultsGroupBox.ResumeLayout(false);
             this.ResultsGroupBox.PerformLayout();

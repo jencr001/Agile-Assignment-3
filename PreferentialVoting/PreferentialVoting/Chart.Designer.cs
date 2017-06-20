@@ -33,7 +33,7 @@
             // 
             // PrintButton
             // 
-            this.PrintButton.Location = new System.Drawing.Point(152, 3);
+            this.PrintButton.Location = new System.Drawing.Point(3, 3);
             this.PrintButton.Name = "PrintButton";
             this.PrintButton.Size = new System.Drawing.Size(129, 23);
             this.PrintButton.TabIndex = 10;
@@ -49,7 +49,7 @@
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.PrintButton);
             this.Name = "Chart";
-            this.Text = "Chart";
+            this.Text = "Initial Vote Chart";
             this.ResumeLayout(false);
 
         }

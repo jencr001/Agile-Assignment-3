@@ -67,6 +67,8 @@
             this.Controls.Add(this.AddCandidateButton);
             this.Controls.Add(this.CandidateTextBox);
             this.Controls.Add(this.CandidateHeadingLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "NewCandidate";
             this.Text = "New Candidate";
             this.ResumeLayout(false);
