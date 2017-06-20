@@ -21,10 +21,10 @@ namespace PreferentialVoting
         public Chart(Result _r)
         {
             InitializeComponent();
-             this.result = _r;
+            this.result = _r;
         }
 
-      
+
         // New OnPaint method
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -82,7 +82,7 @@ namespace PreferentialVoting
                 Font font = new Font("Arial", 14);
 
                 RectangleF rect = new RectangleF(x, y, (int)columnWidth, columnHeight);
-                
+
                 // Draw a filled rectangle for the column
                 g.FillRectangle(currentBrush, rect);
                 // Draw a border around it to make it look pretty
@@ -105,41 +105,47 @@ namespace PreferentialVoting
             // Print the page.
             pd.Print();
         }
-
+        private int yPosition;
+        private int roundPosition = 0;
         // This is where the work of printing each individual page occurs.
         private void PrintPageEvent(object sender, PrintPageEventArgs ev)
         {
-            
 
+            yPosition = 1;
+            float pageHeight = ev.MarginBounds.Height;
             // Draw the graphs
-            foreach (Dictionary<string, int> r in result.Rounds)
+
+
+            Graphics g = ev.Graphics;
+
+
+            int marginLeft = ev.PageSettings.Margins.Left;
+
+
+            int marginRight = ev.PageSettings.Margins.Right;
+            int marginTop = ev.PageSettings.Margins.Top;
+            int marginBottom = ev.PageSettings.Margins.Bottom;
+
+            double maxHeight = ev.PageSettings.PrintableArea.Height - marginTop - marginBottom;
+            double maxWidth = ev.PageSettings.PrintableArea.Width - marginLeft - marginRight;
+
+            while (yPosition + 60 < pageHeight && roundPosition < result.Rounds.Count)
             {
-                
-                Graphics g = ev.Graphics;
-
-                // Work out the margins.
-                int marginLeft = ev.PageSettings.Margins.Left;
-                int marginRight = ev.PageSettings.Margins.Right;
-                int marginTop = ev.PageSettings.Margins.Top;
-                int marginBottom = ev.PageSettings.Margins.Bottom;
-
-                // Work out the usable height and width
-                double maxHeight = ev.PageSettings.PrintableArea.Height - marginTop - marginBottom;
-                double maxWidth = ev.PageSettings.PrintableArea.Width - marginLeft - marginRight;
-                
-                this.generateGraph(r, g, marginLeft, marginTop, maxHeight, maxWidth);
-                if (r != result.Rounds[result.Rounds.Count - 1])
+                this.generateGraph(result.Rounds[roundPosition], g, marginLeft, yPosition, maxHeight, maxWidth);
+                roundPosition++;
+                yPosition = yPosition + (int)pageHeight;
+                if (roundPosition < result.Rounds.Count)
                 {
                     ev.HasMorePages = true;
                 }
-                else
-                {
-                    ev.HasMorePages = false;
-                }
             }
+
+
+
+
 
         }
     }
-       
-    
+
+
 }
