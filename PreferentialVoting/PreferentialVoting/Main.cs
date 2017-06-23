@@ -51,12 +51,13 @@ namespace PreferentialVoting
                         {
                               
                             StreamReader sr = new StreamReader(stream);
-
+                            string l;
                             // read data in line by line
-                            while ((sr.ReadLine()) != null)
+                            while ((l = sr.ReadLine()) != null)
                             {
-                                Console.WriteLine(lines);
-                                lines.Add(sr.ReadLine());
+                                Console.WriteLine(sr.ReadLine());
+                                lines.Add(l);
+ 
                             }
                             sr.Close();
                             // Result of the stream
@@ -68,7 +69,8 @@ namespace PreferentialVoting
                             {
                                 if (first)
                                 {
-                                    headers = line.Split(',');
+                                    string newLine = line.Replace('"', ' ').Trim();
+                                    headers = newLine.Split(',');
                                     foreach (string h in headers)
                                     {
                                         bool found = false;
@@ -91,7 +93,11 @@ namespace PreferentialVoting
                                 }
                                     else
                                 {
-                                      
+                                    string[] voteInfo = line.Split(',');
+                                    VotesGridView.Rows.Add(voteInfo);
+                                    DataGridViewRow dataRow = new DataGridViewRow();
+                                    
+                                    
                                 }
                             }
                          
@@ -100,6 +106,7 @@ namespace PreferentialVoting
                         catch (ArgumentNullException ex)
                         {
                             MessageBox.Show("Error: File can't be accessed");
+                            MessageBox.Show(ex.Message);
 
                         }
                         // Closes the stream
