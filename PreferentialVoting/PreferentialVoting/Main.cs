@@ -63,6 +63,7 @@ namespace PreferentialVoting
 
                             int numColumns = this.VotesGridView.Columns.Count;
                             int oldRows = this.VotesGridView.Rows.Count;
+                            int differentColumns = this.VotesGridView.Columns.Count; ;
 
 
                             bool first = true;
@@ -76,7 +77,7 @@ namespace PreferentialVoting
                                     string newLine = line.Replace('"', ' ').Trim();
                                     headers = newLine.Split(',');
 
-                                    int headerCount = 0;
+                                    int headerLocation = this.VotesGridView.Columns.Count;
 
                                     foreach (string h in headers)
                                     {
@@ -90,9 +91,10 @@ namespace PreferentialVoting
                                         {
                                             if ((VotesGridView.Columns[i].Name.Equals(newH, StringComparison.InvariantCultureIgnoreCase)))
                                             {
-
+                                                headerLocation--;
+                                                differentColumns--;
                                                 found = true;
-                                                numColumns--;
+                                                //numColumns--;
                                                 DataGridViewColumn tempCol = this.VotesGridView.Columns[i]; // Copy of the matching column
 
                                                 List<string> data = new List<string>(); // Holds cell values
@@ -102,17 +104,18 @@ namespace PreferentialVoting
                                                 {
                                                     data.Add(this.VotesGridView.Rows[j].Cells[i].Value.ToString());
                                                 }
-
+                                                
                                                 // Removes then re-inserts the column in the right spot
                                                 this.VotesGridView.Columns.Remove(this.VotesGridView.Columns[i]);
-                                                this.VotesGridView.Columns.Insert(headerCount, tempCol);
+                                               // this.VotesGridView.Columns.Insert(headerLocation, tempCol);
+                                                this.VotesGridView.Columns.Add(tempCol.Name, tempCol.Name);
 
                                                 int rowCount = 0;   // Holds the current row
-
+                                                
                                                 // Puts on the values back in the cell
                                                 foreach (string str in data)
                                                 {
-                                                    this.VotesGridView[headerCount, rowCount].Value = str;
+                                                    this.VotesGridView[headerLocation, rowCount].Value = str;
                                                     rowCount++;
                                                 }
 
@@ -124,65 +127,83 @@ namespace PreferentialVoting
                                             VotesGridView.Columns.Add(newH, newH);
                                         }
 
-                                        headerCount++;
+                                        headerLocation++;
                                     }
                                     first = false;
 
                                 }
+
                                 else
                                 {
-
+                                    
                                     string[] voteInfo = line.Split(',');
 
                                     if (numColumns > 0)
                                     {
                                         
-                                     
-                                        for (int i = 0; i < numColumns; i++)
+
+                                        //  for (int i = 0; i < numColumns; i++)
+                                        // {
+
+                                       
+                                        while (rowNumber < oldRows - 1)
                                         {
                                             
                                             List<string> voteList = new List<string>(); // Holds list of all cell values for a row
-
-                                            if (rowNumber < oldRows - 1)
+                                            for (int j = 0; j < this.VotesGridView.Columns.Count; j++)
                                             {
-                                                // Adds the pre-existing cell values for a row
-                                                voteList.Add(this.VotesGridView.Rows[rowNumber].Cells[i].Value.ToString());
 
-                                                // Adds each of the imported cell values
-                                                foreach (string str in voteInfo)
+                                                if (this.VotesGridView.Rows[rowNumber].Cells[j].Value != null)
                                                 {
-                                                    voteList.Add(str);
+                                                    // Adds the pre-existing cell values for a row
+                                                    voteList.Add(this.VotesGridView.Rows[rowNumber].Cells[j].Value.ToString());
+                                                }
+                                                else
+                                                {
+                                                    voteList.Add("");
                                                 }
 
-                                                // Makes it an array so that it can be added as the row
-                                                string[] finalRow = voteList.ToArray();
-
-                                                this.VotesGridView.Rows.RemoveAt(rowNumber);
-                                                this.VotesGridView.Rows.Insert(rowNumber, finalRow);
-                                            }
-                                            else
-                                            {
-                                                voteList.Add("");
-
                                                 // Adds each of the imported cell values
-                                                foreach (string str in voteInfo)
-                                                {
-                                                    voteList.Add(str);
-                                                }
-
-                                                // Makes it an array so that it can be added as the row
-                                                string[] finalRow = voteList.ToArray();
-                                                this.VotesGridView.Rows.Add(finalRow);
+                                                // foreach (string str in voteInfo)
+                                                //{
+                                                //  voteList.Add(str);
+                                                //}
                                             }
-                                           
+
+                                            
+                                            // Makes it an array so that it can be added as the row
+                                            string[] existingRow = voteList.ToArray();
+
+                                            this.VotesGridView.Rows.RemoveAt(rowNumber);
+                                            this.VotesGridView.Rows.Insert(rowNumber, existingRow);
+                                            rowNumber++;
+
                                         }
+                                        
+                                        List<string> newVoteList = new List<string>(); // Holds list of all cell values for a row
+                                        for (int j = 0; j < differentColumns; j++)
+                                        {
+                                            newVoteList.Add("");
+                                        }
+
+                                        // Adds each of the imported cell values
+                                        foreach (string str in voteInfo)
+                                        {
+                                            newVoteList.Add(str);
+                                        }
+
+                                        // Makes it an array so that it can be added as the row
+                                        string[] finalRow = newVoteList.ToArray();
+                                        this.VotesGridView.Rows.Add(finalRow);
+
+                                        // }
                                     }
                                     else
                                     {
                                         VotesGridView.Rows.Add(voteInfo);
                                     }
                                     DataGridViewRow dataRow = new DataGridViewRow();
-                                    rowNumber++;
+
 
                                 }
                             }
