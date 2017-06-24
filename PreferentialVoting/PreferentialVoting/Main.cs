@@ -32,6 +32,10 @@ namespace PreferentialVoting
 
         private void ImportCSVButton_Click(object sender, EventArgs e)
         {
+
+            // Stupid fix
+            this.VotesGridView.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+
             // Tries to load a file that the user selects
             try
             {
@@ -63,7 +67,7 @@ namespace PreferentialVoting
 
                             int numColumns = this.VotesGridView.Columns.Count;
                             int oldRows = this.VotesGridView.Rows.Count;
-                            int differentColumns = this.VotesGridView.Columns.Count; ;
+                            int differentColumns = this.VotesGridView.Columns.Count;
 
 
                             bool first = true;
@@ -144,7 +148,7 @@ namespace PreferentialVoting
 
                                         //  for (int i = 0; i < numColumns; i++)
                                         // {
-
+                                        
                                        
                                         while (rowNumber < oldRows - 1)
                                         {
@@ -152,7 +156,7 @@ namespace PreferentialVoting
                                             List<string> voteList = new List<string>(); // Holds list of all cell values for a row
                                             for (int j = 0; j < this.VotesGridView.Columns.Count; j++)
                                             {
-
+                                                
                                                 if (this.VotesGridView.Rows[rowNumber].Cells[j].Value != null)
                                                 {
                                                     // Adds the pre-existing cell values for a row
@@ -174,9 +178,22 @@ namespace PreferentialVoting
                                             // Makes it an array so that it can be added as the row
                                             string[] existingRow = voteList.ToArray();
 
-                                            this.VotesGridView.Rows.RemoveAt(rowNumber);
-                                            this.VotesGridView.Rows.Insert(rowNumber, existingRow);
+
+                                            if (this.VotesGridView.Rows.Count == 1 && differentColumns == 0)
+                                            {
+                                                Console.WriteLine("Weird Error");
+                                                this.VotesGridView.Rows.Clear();
+                                                this.VotesGridView.Rows.Add(existingRow);
+                                                //this.VotesGridView.Rows.RemoveAt(rowNumber);
+                                            }
+                                            else
+                                            {
+                                                this.VotesGridView.Rows.RemoveAt(rowNumber);
+                                                this.VotesGridView.Rows.Insert(rowNumber, existingRow);
+                                            }
+                                            
                                             rowNumber++;
+                                            
 
                                         }
                                         
