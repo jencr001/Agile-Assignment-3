@@ -23,7 +23,7 @@ namespace PreferentialVoting
         public Main()
         {
             InitializeComponent();
-            
+
             allVotes = new VotesList();
             candidates = new List<string>();
         }
@@ -49,58 +49,144 @@ namespace PreferentialVoting
                         List<string> lines = new List<string>();
                         try
                         {
-                              
+
                             StreamReader sr = new StreamReader(stream);
                             string l;
                             // read data in line by line
                             while ((l = sr.ReadLine()) != null)
                             {
-                                Console.WriteLine(sr.ReadLine());
                                 lines.Add(l);
- 
+
                             }
                             sr.Close();
                             // Result of the stream
 
+                            int numColumns = this.VotesGridView.Columns.Count;
+                            int oldRows = this.VotesGridView.Rows.Count;
+
 
                             bool first = true;
                             string[] headers;
+                            int rowNumber = 0;
+
                             foreach (string line in lines)
                             {
                                 if (first)
                                 {
                                     string newLine = line.Replace('"', ' ').Trim();
                                     headers = newLine.Split(',');
+
+                                    int headerCount = 0;
+
                                     foreach (string h in headers)
                                     {
+                                        List<char> result = h.ToList();
+                                        result.RemoveAll(c => c == ' ');
+                                        string newH = new string(result.ToArray());
+
                                         bool found = false;
+
                                         for (int i = 0; i < VotesGridView.Columns.Count; i++)
                                         {
-                                            if ((VotesGridView.Columns[i].Name.Equals(h, StringComparison.InvariantCultureIgnoreCase)))
+                                            if ((VotesGridView.Columns[i].Name.Equals(newH, StringComparison.InvariantCultureIgnoreCase)))
                                             {
+
                                                 found = true;
+                                                numColumns--;
+                                                DataGridViewColumn tempCol = this.VotesGridView.Columns[i]; // Copy of the matching column
+
+                                                List<string> data = new List<string>(); // Holds cell values
+
+                                                // Adds the columns' cell value to the list
+                                                for (int j = 0; j < this.VotesGridView.RowCount - 1; j++)
+                                                {
+                                                    data.Add(this.VotesGridView.Rows[j].Cells[i].Value.ToString());
+                                                }
+
+                                                // Removes then re-inserts the column in the right spot
+                                                this.VotesGridView.Columns.Remove(this.VotesGridView.Columns[i]);
+                                                this.VotesGridView.Columns.Insert(headerCount, tempCol);
+
+                                                int rowCount = 0;   // Holds the current row
+
+                                                // Puts on the values back in the cell
+                                                foreach (string str in data)
+                                                {
+                                                    this.VotesGridView[headerCount, rowCount].Value = str;
+                                                    rowCount++;
+                                                }
+
                                                 break;
                                             }
                                         }
                                         if (!found)
                                         {
-                                            VotesGridView.Columns.Add(h, h);
+                                            VotesGridView.Columns.Add(newH, newH);
                                         }
 
-
+                                        headerCount++;
                                     }
                                     first = false;
+
                                 }
-                                    else
+                                else
                                 {
+
                                     string[] voteInfo = line.Split(',');
-                                    VotesGridView.Rows.Add(voteInfo);
+
+                                    if (numColumns > 0)
+                                    {
+                                        
+                                     
+                                        for (int i = 0; i < numColumns; i++)
+                                        {
+                                            
+                                            List<string> voteList = new List<string>(); // Holds list of all cell values for a row
+
+                                            if (rowNumber < oldRows - 1)
+                                            {
+                                                // Adds the pre-existing cell values for a row
+                                                voteList.Add(this.VotesGridView.Rows[rowNumber].Cells[i].Value.ToString());
+
+                                                // Adds each of the imported cell values
+                                                foreach (string str in voteInfo)
+                                                {
+                                                    voteList.Add(str);
+                                                }
+
+                                                // Makes it an array so that it can be added as the row
+                                                string[] finalRow = voteList.ToArray();
+
+                                                this.VotesGridView.Rows.RemoveAt(rowNumber);
+                                                this.VotesGridView.Rows.Insert(rowNumber, finalRow);
+                                            }
+                                            else
+                                            {
+                                                voteList.Add("");
+
+                                                // Adds each of the imported cell values
+                                                foreach (string str in voteInfo)
+                                                {
+                                                    voteList.Add(str);
+                                                }
+
+                                                // Makes it an array so that it can be added as the row
+                                                string[] finalRow = voteList.ToArray();
+                                                this.VotesGridView.Rows.Add(finalRow);
+                                            }
+                                           
+                                        }
+                                    }
+                                    else
+                                    {
+                                        VotesGridView.Rows.Add(voteInfo);
+                                    }
                                     DataGridViewRow dataRow = new DataGridViewRow();
-                                    
-                                    
+                                    rowNumber++;
+
                                 }
                             }
-                         
+
                             // Checks for errors
                         }
                         catch (ArgumentNullException ex)
@@ -115,14 +201,14 @@ namespace PreferentialVoting
                             stream.Close();
                         }
                     }
-                    
+
                 }
                 // If there is an error, display it
                 else
                 {
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Error: Not correct type of file");
             }
@@ -362,7 +448,7 @@ namespace PreferentialVoting
                                 {
                                     csv.Append(entry.Value + ", ");
                                 }
-   
+
 
                                 index++;
                             }
@@ -375,10 +461,10 @@ namespace PreferentialVoting
                                 index++;
                             }
 
-                           
 
-                                csv.AppendLine("");
-                        
+
+                            csv.AppendLine("");
+
                         }
 
                         // Writes to the csv and informs the user
