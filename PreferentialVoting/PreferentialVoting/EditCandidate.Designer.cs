@@ -35,9 +35,10 @@
             // 
             // EditCandidateButton
             // 
-            this.EditCandidateButton.Location = new System.Drawing.Point(88, 170);
+            this.EditCandidateButton.Location = new System.Drawing.Point(103, 209);
+            this.EditCandidateButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.EditCandidateButton.Name = "EditCandidateButton";
-            this.EditCandidateButton.Size = new System.Drawing.Size(112, 23);
+            this.EditCandidateButton.Size = new System.Drawing.Size(131, 28);
             this.EditCandidateButton.TabIndex = 11;
             this.EditCandidateButton.Text = "Change";
             this.EditCandidateButton.UseVisualStyleBackColor = true;
@@ -45,31 +46,36 @@
             // 
             // CandidateTextBox
             // 
-            this.CandidateTextBox.Location = new System.Drawing.Point(73, 101);
+            this.CandidateTextBox.Location = new System.Drawing.Point(85, 125);
+            this.CandidateTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CandidateTextBox.Name = "CandidateTextBox";
-            this.CandidateTextBox.Size = new System.Drawing.Size(139, 20);
+            this.CandidateTextBox.Size = new System.Drawing.Size(161, 22);
             this.CandidateTextBox.TabIndex = 10;
             // 
             // CandidateHeadingLabel
             // 
             this.CandidateHeadingLabel.AutoSize = true;
-            this.CandidateHeadingLabel.Location = new System.Drawing.Point(85, 69);
+            this.CandidateHeadingLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CandidateHeadingLabel.Location = new System.Drawing.Point(89, 87);
             this.CandidateHeadingLabel.Name = "CandidateHeadingLabel";
-            this.CandidateHeadingLabel.Size = new System.Drawing.Size(116, 13);
+            this.CandidateHeadingLabel.Size = new System.Drawing.Size(154, 16);
             this.CandidateHeadingLabel.TabIndex = 9;
             this.CandidateHeadingLabel.Text = "Rename the Candidate";
             // 
             // EditCandidate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(331, 322);
             this.Controls.Add(this.EditCandidateButton);
             this.Controls.Add(this.CandidateTextBox);
             this.Controls.Add(this.CandidateHeadingLabel);
+            this.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "EditCandidate";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit Candidate";
             this.ResumeLayout(false);
             this.PerformLayout();

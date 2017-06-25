@@ -50,9 +50,11 @@
             // 
             // NewCandidateButton
             // 
-            this.NewCandidateButton.Location = new System.Drawing.Point(21, 19);
+            this.NewCandidateButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewCandidateButton.Location = new System.Drawing.Point(24, 23);
+            this.NewCandidateButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NewCandidateButton.Name = "NewCandidateButton";
-            this.NewCandidateButton.Size = new System.Drawing.Size(89, 23);
+            this.NewCandidateButton.Size = new System.Drawing.Size(104, 28);
             this.NewCandidateButton.TabIndex = 0;
             this.NewCandidateButton.Text = "New Candidate";
             this.NewCandidateButton.UseVisualStyleBackColor = true;
@@ -60,9 +62,11 @@
             // 
             // editCandidateButton
             // 
-            this.editCandidateButton.Location = new System.Drawing.Point(116, 19);
+            this.editCandidateButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editCandidateButton.Location = new System.Drawing.Point(134, 23);
+            this.editCandidateButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.editCandidateButton.Name = "editCandidateButton";
-            this.editCandidateButton.Size = new System.Drawing.Size(89, 23);
+            this.editCandidateButton.Size = new System.Drawing.Size(104, 28);
             this.editCandidateButton.TabIndex = 1;
             this.editCandidateButton.Text = "Edit Candidate";
             this.editCandidateButton.UseVisualStyleBackColor = true;
@@ -70,9 +74,11 @@
             // 
             // RemoveCandidateButton
             // 
-            this.RemoveCandidateButton.Location = new System.Drawing.Point(211, 19);
+            this.RemoveCandidateButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RemoveCandidateButton.Location = new System.Drawing.Point(244, 23);
+            this.RemoveCandidateButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RemoveCandidateButton.Name = "RemoveCandidateButton";
-            this.RemoveCandidateButton.Size = new System.Drawing.Size(112, 23);
+            this.RemoveCandidateButton.Size = new System.Drawing.Size(131, 28);
             this.RemoveCandidateButton.TabIndex = 2;
             this.RemoveCandidateButton.Text = "Remove Candidate";
             this.RemoveCandidateButton.UseVisualStyleBackColor = true;
@@ -80,9 +86,11 @@
             // 
             // ImportCSVButton
             // 
-            this.ImportCSVButton.Location = new System.Drawing.Point(503, 19);
+            this.ImportCSVButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ImportCSVButton.Location = new System.Drawing.Point(586, 23);
+            this.ImportCSVButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ImportCSVButton.Name = "ImportCSVButton";
-            this.ImportCSVButton.Size = new System.Drawing.Size(112, 23);
+            this.ImportCSVButton.Size = new System.Drawing.Size(131, 28);
             this.ImportCSVButton.TabIndex = 3;
             this.ImportCSVButton.Text = "Import CSV";
             this.ImportCSVButton.UseVisualStyleBackColor = true;
@@ -90,9 +98,10 @@
             // 
             // CountVotesButton
             // 
-            this.CountVotesButton.Location = new System.Drawing.Point(273, 319);
+            this.CountVotesButton.Location = new System.Drawing.Point(318, 393);
+            this.CountVotesButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CountVotesButton.Name = "CountVotesButton";
-            this.CountVotesButton.Size = new System.Drawing.Size(75, 23);
+            this.CountVotesButton.Size = new System.Drawing.Size(87, 28);
             this.CountVotesButton.TabIndex = 6;
             this.CountVotesButton.Text = "Count Votes";
             this.CountVotesButton.UseVisualStyleBackColor = true;
@@ -104,9 +113,12 @@
             this.ResultsGroupBox.Controls.Add(this.WinnerHeadingLabel);
             this.ResultsGroupBox.Controls.Add(this.InvalidVotesLabel);
             this.ResultsGroupBox.Controls.Add(this.InvalidVotesHeadingLabel);
-            this.ResultsGroupBox.Location = new System.Drawing.Point(12, 366);
+            this.ResultsGroupBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResultsGroupBox.Location = new System.Drawing.Point(14, 450);
+            this.ResultsGroupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ResultsGroupBox.Name = "ResultsGroupBox";
-            this.ResultsGroupBox.Size = new System.Drawing.Size(642, 139);
+            this.ResultsGroupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ResultsGroupBox.Size = new System.Drawing.Size(749, 171);
             this.ResultsGroupBox.TabIndex = 7;
             this.ResultsGroupBox.TabStop = false;
             this.ResultsGroupBox.Text = "Results";
@@ -114,44 +126,47 @@
             // WinnerLabel
             // 
             this.WinnerLabel.AutoSize = true;
-            this.WinnerLabel.Location = new System.Drawing.Point(214, 42);
+            this.WinnerLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WinnerLabel.Location = new System.Drawing.Point(272, 52);
             this.WinnerLabel.Name = "WinnerLabel";
-            this.WinnerLabel.Size = new System.Drawing.Size(33, 13);
+            this.WinnerLabel.Size = new System.Drawing.Size(38, 16);
             this.WinnerLabel.TabIndex = 9;
             this.WinnerLabel.Text = "None";
             // 
             // WinnerHeadingLabel
             // 
             this.WinnerHeadingLabel.AutoSize = true;
-            this.WinnerHeadingLabel.Location = new System.Drawing.Point(31, 42);
+            this.WinnerHeadingLabel.Location = new System.Drawing.Point(36, 52);
             this.WinnerHeadingLabel.Name = "WinnerHeadingLabel";
-            this.WinnerHeadingLabel.Size = new System.Drawing.Size(177, 13);
+            this.WinnerHeadingLabel.Size = new System.Drawing.Size(230, 16);
             this.WinnerHeadingLabel.TabIndex = 8;
             this.WinnerHeadingLabel.Text = "The Candidate That Won the Vote: ";
             // 
             // InvalidVotesLabel
             // 
             this.InvalidVotesLabel.AutoSize = true;
-            this.InvalidVotesLabel.Location = new System.Drawing.Point(121, 81);
+            this.InvalidVotesLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InvalidVotesLabel.Location = new System.Drawing.Point(141, 100);
             this.InvalidVotesLabel.Name = "InvalidVotesLabel";
-            this.InvalidVotesLabel.Size = new System.Drawing.Size(13, 13);
+            this.InvalidVotesLabel.Size = new System.Drawing.Size(15, 16);
             this.InvalidVotesLabel.TabIndex = 7;
             this.InvalidVotesLabel.Text = "0";
             // 
             // InvalidVotesHeadingLabel
             // 
             this.InvalidVotesHeadingLabel.AutoSize = true;
-            this.InvalidVotesHeadingLabel.Location = new System.Drawing.Point(31, 81);
+            this.InvalidVotesHeadingLabel.Location = new System.Drawing.Point(36, 100);
             this.InvalidVotesHeadingLabel.Name = "InvalidVotesHeadingLabel";
-            this.InvalidVotesHeadingLabel.Size = new System.Drawing.Size(71, 13);
+            this.InvalidVotesHeadingLabel.Size = new System.Drawing.Size(93, 16);
             this.InvalidVotesHeadingLabel.TabIndex = 6;
             this.InvalidVotesHeadingLabel.Text = "Invalid Votes:";
             // 
             // ExportCSVButton
             // 
-            this.ExportCSVButton.Location = new System.Drawing.Point(525, 511);
+            this.ExportCSVButton.Location = new System.Drawing.Point(600, 629);
+            this.ExportCSVButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ExportCSVButton.Name = "ExportCSVButton";
-            this.ExportCSVButton.Size = new System.Drawing.Size(129, 23);
+            this.ExportCSVButton.Size = new System.Drawing.Size(162, 28);
             this.ExportCSVButton.TabIndex = 8;
             this.ExportCSVButton.Text = "Export Results as CSV";
             this.ExportCSVButton.UseVisualStyleBackColor = true;
@@ -159,9 +174,10 @@
             // 
             // ResetVoteButton
             // 
-            this.ResetVoteButton.Location = new System.Drawing.Point(535, 319);
+            this.ResetVoteButton.Location = new System.Drawing.Point(624, 393);
+            this.ResetVoteButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ResetVoteButton.Name = "ResetVoteButton";
-            this.ResetVoteButton.Size = new System.Drawing.Size(119, 23);
+            this.ResetVoteButton.Size = new System.Drawing.Size(139, 28);
             this.ResetVoteButton.TabIndex = 10;
             this.ResetVoteButton.Text = "Reset All";
             this.ResetVoteButton.UseVisualStyleBackColor = true;
@@ -170,9 +186,10 @@
             // HeadingHeadingLabel
             // 
             this.HeadingHeadingLabel.AutoSize = true;
-            this.HeadingHeadingLabel.Location = new System.Drawing.Point(29, 25);
+            this.HeadingHeadingLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HeadingHeadingLabel.Location = new System.Drawing.Point(34, 31);
             this.HeadingHeadingLabel.Name = "HeadingHeadingLabel";
-            this.HeadingHeadingLabel.Size = new System.Drawing.Size(133, 13);
+            this.HeadingHeadingLabel.Size = new System.Drawing.Size(215, 19);
             this.HeadingHeadingLabel.TabIndex = 11;
             this.HeadingHeadingLabel.Text = "Preferential Voting Counter";
             // 
@@ -183,9 +200,12 @@
             this.CandidateGroupBox.Controls.Add(this.ImportCSVButton);
             this.CandidateGroupBox.Controls.Add(this.RemoveCandidateButton);
             this.CandidateGroupBox.Controls.Add(this.NewCandidateButton);
-            this.CandidateGroupBox.Location = new System.Drawing.Point(12, 60);
+            this.CandidateGroupBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CandidateGroupBox.Location = new System.Drawing.Point(14, 74);
+            this.CandidateGroupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CandidateGroupBox.Name = "CandidateGroupBox";
-            this.CandidateGroupBox.Size = new System.Drawing.Size(642, 253);
+            this.CandidateGroupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.CandidateGroupBox.Size = new System.Drawing.Size(749, 311);
             this.CandidateGroupBox.TabIndex = 12;
             this.CandidateGroupBox.TabStop = false;
             this.CandidateGroupBox.Text = "Candidates";
@@ -193,10 +213,11 @@
             // VotesGridView
             // 
             this.VotesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.VotesGridView.Location = new System.Drawing.Point(21, 48);
+            this.VotesGridView.Location = new System.Drawing.Point(24, 59);
+            this.VotesGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.VotesGridView.MultiSelect = false;
             this.VotesGridView.Name = "VotesGridView";
-            this.VotesGridView.Size = new System.Drawing.Size(594, 199);
+            this.VotesGridView.Size = new System.Drawing.Size(693, 245);
             this.VotesGridView.TabIndex = 4;
             this.VotesGridView.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.VotesGridView_ColumnAdded);
             this.VotesGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.VotesGridView_ColumnHeaderMouseClick);
@@ -204,16 +225,18 @@
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 552);
+            this.ClientSize = new System.Drawing.Size(777, 679);
             this.Controls.Add(this.CandidateGroupBox);
             this.Controls.Add(this.HeadingHeadingLabel);
             this.Controls.Add(this.ResetVoteButton);
             this.Controls.Add(this.ExportCSVButton);
             this.Controls.Add(this.ResultsGroupBox);
             this.Controls.Add(this.CountVotesButton);
+            this.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

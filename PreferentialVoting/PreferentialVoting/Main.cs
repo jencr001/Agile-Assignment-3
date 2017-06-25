@@ -26,6 +26,7 @@ namespace PreferentialVoting
 
             allVotes = new VotesList();
             candidates = new List<string>();
+            this.VotesGridView.Font = new Font("Arial", 10, FontStyle.Regular);
         }
 
 
