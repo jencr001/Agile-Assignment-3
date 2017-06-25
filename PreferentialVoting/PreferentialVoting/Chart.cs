@@ -55,7 +55,7 @@ namespace PreferentialVoting
             g.Clear(Color.WhiteSmoke);
 
             // Generate the graph
-            this.generateGraph(result.Rounds[0], g, leftMargin, topMargin, maxHeight, maxWidth);
+            this.generateGraph(result.Rounds[result.Rounds.Count - 1], g, leftMargin, topMargin, maxHeight, maxWidth);
 
             // Repaints any additional features
             base.OnPaint(e);

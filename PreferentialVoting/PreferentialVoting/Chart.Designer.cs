@@ -48,9 +48,9 @@
             this.ChartHeadingLabel.AutoSize = true;
             this.ChartHeadingLabel.Location = new System.Drawing.Point(12, 9);
             this.ChartHeadingLabel.Name = "ChartHeadingLabel";
-            this.ChartHeadingLabel.Size = new System.Drawing.Size(188, 16);
+            this.ChartHeadingLabel.Size = new System.Drawing.Size(107, 16);
             this.ChartHeadingLabel.TabIndex = 11;
-            this.ChartHeadingLabel.Text = "The first round of voting results:";
+            this.ChartHeadingLabel.Text = "The final results: ";
             // 
             // Chart
             // 
@@ -66,7 +66,7 @@
             this.MaximizeBox = false;
             this.Name = "Chart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Initial Vote Chart";
+            this.Text = "Final Vote Chart";
             this.ResumeLayout(false);
             this.PerformLayout();
 
