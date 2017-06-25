@@ -47,7 +47,6 @@ namespace PreferentialVoting.Classes
 
             foreach (KeyValuePair<string, int> entry in this)
             {
-                // do something with entry.Value or entry.Key
                 if (!candidates.Contains(entry.Key)) return true;
 
                 if (numbers.Contains(entry.Value))
@@ -75,7 +74,8 @@ namespace PreferentialVoting.Classes
                     do
                     {
                         currentPreferenceNumber++;
-                    } while (!this.Values.Contains(candidatePreferenceNumber));
+                    } while (!this.Values.Contains(currentPreferenceNumber));
+
                 }
                 this.Remove(candidate);
             }

@@ -12,7 +12,6 @@ namespace PreferentialVoting.Classes
     /// </summary>
     class VotesList : List<Vote>
     {
-     //   private Dictionary<string, int> results = new Dictionary<string, int>();
         private List<string> candidates;
         private int majority;
         private int numberOfVotes;
@@ -31,14 +30,6 @@ namespace PreferentialVoting.Classes
             set { results = value; }
         }
 
-        /*  public VotesList(VotesList other)
-          {
-              this.results = other.results;
-              this.candidates = other.candidates;
-              this.majority = other.majority;
-              this.numberOfInvalidVotes = other.numberOfInvalidVotes;
-              this.numberOfVotes = other.numberOfVotes;
-          }*/
         public VotesList() { }
 
         public Result calculateResult(List<string> _candidates)
@@ -46,10 +37,12 @@ namespace PreferentialVoting.Classes
             // Gets the candidate name and number of votes
             candidates = _candidates;
             numberOfVotes = this.Count;
+
             //works out what the majority is
             majority = numberOfVotes / 2 + 1;
             numberOfInvalidVotes = 0;
             bool finalTie = false;
+
             //sets up the final results
             foreach (string candidate in candidates)
             {
@@ -109,7 +102,6 @@ namespace PreferentialVoting.Classes
 
                 // Get result
                 String asString = string.Join(";", results);
-                Console.WriteLine(asString);
                
                 return results;
             }
@@ -140,7 +132,6 @@ namespace PreferentialVoting.Classes
                             }
                         }
                     }
-                
             }
             Dictionary<string, int> tmp = new Dictionary<string, int>(results.FinalResults);
          

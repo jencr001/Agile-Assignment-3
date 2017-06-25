@@ -181,7 +181,6 @@ namespace PreferentialVoting
 
                                             if (this.VotesGridView.Rows.Count == 1 && differentColumns == 0)
                                             {
-                                                Console.WriteLine("Weird Error");
                                                 this.VotesGridView.Rows.Clear();
                                                 this.VotesGridView.Rows.Add(existingRow);
                                                 //this.VotesGridView.Rows.RemoveAt(rowNumber);
@@ -472,7 +471,6 @@ namespace PreferentialVoting
                             csv.Append(round + ", ");
 
                             int index = 0;
-                            Console.WriteLine("Round Count: " + rnd.Count);
 
                             foreach (KeyValuePair<string, int> entry in rnd)
                             {
@@ -491,8 +489,6 @@ namespace PreferentialVoting
                                 index++;
                             }
 
-                            Console.WriteLine("Index: " + index);
-                            Console.WriteLine("Cs: " + candidates.Count);
                             while (index < candidates.Count)
                             {
                                 csv.Append("P, ");
