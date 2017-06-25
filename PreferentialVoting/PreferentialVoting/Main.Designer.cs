@@ -42,8 +42,8 @@
             this.ResetVoteButton = new System.Windows.Forms.Button();
             this.HeadingHeadingLabel = new System.Windows.Forms.Label();
             this.CandidateGroupBox = new System.Windows.Forms.GroupBox();
-            this.VotesGridView = new System.Windows.Forms.DataGridView();
             this.DeleteHeadingLabel = new System.Windows.Forms.Label();
+            this.VotesGridView = new System.Windows.Forms.DataGridView();
             this.ResultsGroupBox.SuspendLayout();
             this.CandidateGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VotesGridView)).BeginInit();
@@ -188,7 +188,7 @@
             // 
             this.HeadingHeadingLabel.AutoSize = true;
             this.HeadingHeadingLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HeadingHeadingLabel.Location = new System.Drawing.Point(34, 31);
+            this.HeadingHeadingLabel.Location = new System.Drawing.Point(286, 30);
             this.HeadingHeadingLabel.Name = "HeadingHeadingLabel";
             this.HeadingHeadingLabel.Size = new System.Drawing.Size(215, 19);
             this.HeadingHeadingLabel.TabIndex = 11;
@@ -212,6 +212,16 @@
             this.CandidateGroupBox.TabStop = false;
             this.CandidateGroupBox.Text = "Candidates";
             // 
+            // DeleteHeadingLabel
+            // 
+            this.DeleteHeadingLabel.AutoSize = true;
+            this.DeleteHeadingLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteHeadingLabel.Location = new System.Drawing.Point(24, 308);
+            this.DeleteHeadingLabel.Name = "DeleteHeadingLabel";
+            this.DeleteHeadingLabel.Size = new System.Drawing.Size(413, 16);
+            this.DeleteHeadingLabel.TabIndex = 5;
+            this.DeleteHeadingLabel.Text = "To delete a row, select the full row and press \'Delete\' on your keyboard";
+            // 
             // VotesGridView
             // 
             this.VotesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -224,16 +234,6 @@
             this.VotesGridView.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.VotesGridView_ColumnAdded);
             this.VotesGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.VotesGridView_ColumnHeaderMouseClick);
             this.VotesGridView.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.VotesGridView_RowHeaderMouseClick);
-            // 
-            // DeleteHeadingLabel
-            // 
-            this.DeleteHeadingLabel.AutoSize = true;
-            this.DeleteHeadingLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteHeadingLabel.Location = new System.Drawing.Point(24, 308);
-            this.DeleteHeadingLabel.Name = "DeleteHeadingLabel";
-            this.DeleteHeadingLabel.Size = new System.Drawing.Size(413, 16);
-            this.DeleteHeadingLabel.TabIndex = 5;
-            this.DeleteHeadingLabel.Text = "To delete a row, select the full row and press \'Delete\' on your keyboard";
             // 
             // Main
             // 

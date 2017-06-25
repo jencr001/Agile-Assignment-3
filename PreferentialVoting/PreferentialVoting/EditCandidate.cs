@@ -14,16 +14,19 @@ namespace PreferentialVoting
     /// </summary>
     public partial class EditCandidate : Form
     {
-        private Main mainForm;     // An instance of the MainForm class
+        private Main mainForm;          // An instance of the MainForm class
+        private string oldCandidate;    // Holds the name of the candidate to change
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="mainForm">Instance of the mainForm</param>
-        public EditCandidate(Main mainForm)
+        public EditCandidate(Main mainForm, string oldCandidate)
         {
             InitializeComponent();
             this.mainForm = mainForm;
+            this.oldCandidate = oldCandidate;
+            this.CandidateTextBox.Text = this.oldCandidate;
         }
 
         /// <summary>

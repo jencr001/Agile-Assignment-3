@@ -10,29 +10,35 @@ namespace PreferentialVoting.Classes
     /// </summary>
     public class Result
     {
+        private Dictionary<string, int> finalResults = new Dictionary<string, int>();           // Holds the final score results
+        private List<string> winners;                                                           // Holds the string of the winners
+        private List<Dictionary<string, int>> rounds = new List<Dictionary<string, int>>();     // Holds the results of each round       
+        private int numberOfInvalidVotes = 0;                                                   // Holds the number of invalid votes
 
-        private Dictionary<string, int> finalResults = new Dictionary<string, int>();
-        private List<string> winners;
-        private List<Dictionary<string, int>> rounds = new List<Dictionary<string, int>>();
-        private int numberOfInvalidVotes = 0;
+        #region Constructor
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public Result() { }
+        #endregion
 
-        public int NumberOfInvalidVotes
+        #region Getters and Setters
+        // Getters and Setters
+        public Dictionary<string, int> FinalResults
         {
-            get { return numberOfInvalidVotes; }
-            set { numberOfInvalidVotes = value; }
-        } 
-
-        public List<Dictionary<string, int>> Rounds
-        {
-            get { return rounds; }
-            set { rounds = value; }
+            get { return finalResults; }
+            set { finalResults = value; }
         }
 
         public List<string> Winners
         {
-            get {
-                List<string> returnValue = new List<string>();
-                int highestValue = finalResults.Values.Max();
+            get
+            {
+                List<string> returnValue = new List<string>();  // The winning candidate(s)
+                int highestValue = finalResults.Values.Max();   // The final vote of the winning candidate(s)
+
+                // Goes through each of the final results and checks if they had the highest vote meaning they are a winner
+                // and then adds it to the list of winners
                 foreach (KeyValuePair<string, int> entry in finalResults)
                 {
                     if (highestValue == entry.Value)
@@ -41,22 +47,21 @@ namespace PreferentialVoting.Classes
                     }
                 }
                 return returnValue;
-            
             }
             set { winners = value; }
         }
-       
 
-        public Dictionary<string, int> FinalResults
+        public List<Dictionary<string, int>> Rounds
         {
-            get { return finalResults; }
-            set { finalResults = value; }
+            get { return rounds; }
+            set { rounds = value; }
         }
 
-
-
-
-        public Result() { }
-
-    }
+        public int NumberOfInvalidVotes
+        {
+            get { return numberOfInvalidVotes; }
+            set { numberOfInvalidVotes = value; }
+        }
+        #endregion
+    }     
 }

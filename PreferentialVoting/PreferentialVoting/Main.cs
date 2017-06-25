@@ -85,7 +85,7 @@ namespace PreferentialVoting
                 this.VotesGridView.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
 
                 // Displays an editCandidate Form
-                EditCandidate editCandidate = new EditCandidate(this);
+                EditCandidate editCandidate = new EditCandidate(this, this.VotesGridView.Columns[this.VotesGridView.CurrentCell.ColumnIndex].Name.ToString());
                 editCandidate.Show();
 
             }
