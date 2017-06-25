@@ -9,20 +9,21 @@ using System.Windows.Forms;
 
 namespace PreferentialVoting
 {
-
     /// <summary>
     /// Class that adds a candidate
     /// </summary>
     public partial class NewCandidate : Form
     {
-
         private Main mainForm;     // An instance of the MainForm class
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="mainForm">Instance of the mainForm</param>
         public NewCandidate(Main mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
-
         }
 
         /// <summary>
@@ -32,7 +33,6 @@ namespace PreferentialVoting
         /// <param name="e">The extra messages</param>
         private void AddCandidateButton_Click(object sender, EventArgs e)
         {
-
             Boolean found = false;  // Whether the value is contained in the list
 
             // Goes through the list and changes the found variable if the candidate is already in the list
@@ -71,7 +71,6 @@ namespace PreferentialVoting
         /// <param name="e">The extra messages</param>
         private void NewCandidate_Disposed(object sender, EventArgs e)
         {
-
             // Closes the current form
             this.Hide();
         }

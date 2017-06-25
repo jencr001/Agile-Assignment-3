@@ -16,6 +16,10 @@ namespace PreferentialVoting
     {
         private Main mainForm;     // An instance of the MainForm class
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="mainForm">Instance of the mainForm</param>
         public EditCandidate(Main mainForm)
         {
             InitializeComponent();

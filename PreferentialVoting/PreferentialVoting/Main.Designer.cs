@@ -43,6 +43,7 @@
             this.HeadingHeadingLabel = new System.Windows.Forms.Label();
             this.CandidateGroupBox = new System.Windows.Forms.GroupBox();
             this.VotesGridView = new System.Windows.Forms.DataGridView();
+            this.DeleteHeadingLabel = new System.Windows.Forms.Label();
             this.ResultsGroupBox.SuspendLayout();
             this.CandidateGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VotesGridView)).BeginInit();
@@ -98,7 +99,7 @@
             // 
             // CountVotesButton
             // 
-            this.CountVotesButton.Location = new System.Drawing.Point(318, 393);
+            this.CountVotesButton.Location = new System.Drawing.Point(319, 421);
             this.CountVotesButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CountVotesButton.Name = "CountVotesButton";
             this.CountVotesButton.Size = new System.Drawing.Size(87, 28);
@@ -114,7 +115,7 @@
             this.ResultsGroupBox.Controls.Add(this.InvalidVotesLabel);
             this.ResultsGroupBox.Controls.Add(this.InvalidVotesHeadingLabel);
             this.ResultsGroupBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ResultsGroupBox.Location = new System.Drawing.Point(14, 450);
+            this.ResultsGroupBox.Location = new System.Drawing.Point(15, 488);
             this.ResultsGroupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ResultsGroupBox.Name = "ResultsGroupBox";
             this.ResultsGroupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -163,7 +164,7 @@
             // 
             // ExportCSVButton
             // 
-            this.ExportCSVButton.Location = new System.Drawing.Point(600, 629);
+            this.ExportCSVButton.Location = new System.Drawing.Point(601, 667);
             this.ExportCSVButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ExportCSVButton.Name = "ExportCSVButton";
             this.ExportCSVButton.Size = new System.Drawing.Size(162, 28);
@@ -174,7 +175,7 @@
             // 
             // ResetVoteButton
             // 
-            this.ResetVoteButton.Location = new System.Drawing.Point(624, 393);
+            this.ResetVoteButton.Location = new System.Drawing.Point(625, 421);
             this.ResetVoteButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ResetVoteButton.Name = "ResetVoteButton";
             this.ResetVoteButton.Size = new System.Drawing.Size(139, 28);
@@ -195,6 +196,7 @@
             // 
             // CandidateGroupBox
             // 
+            this.CandidateGroupBox.Controls.Add(this.DeleteHeadingLabel);
             this.CandidateGroupBox.Controls.Add(this.editCandidateButton);
             this.CandidateGroupBox.Controls.Add(this.VotesGridView);
             this.CandidateGroupBox.Controls.Add(this.ImportCSVButton);
@@ -205,7 +207,7 @@
             this.CandidateGroupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CandidateGroupBox.Name = "CandidateGroupBox";
             this.CandidateGroupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.CandidateGroupBox.Size = new System.Drawing.Size(749, 311);
+            this.CandidateGroupBox.Size = new System.Drawing.Size(749, 339);
             this.CandidateGroupBox.TabIndex = 12;
             this.CandidateGroupBox.TabStop = false;
             this.CandidateGroupBox.Text = "Candidates";
@@ -223,11 +225,21 @@
             this.VotesGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.VotesGridView_ColumnHeaderMouseClick);
             this.VotesGridView.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.VotesGridView_RowHeaderMouseClick);
             // 
+            // DeleteHeadingLabel
+            // 
+            this.DeleteHeadingLabel.AutoSize = true;
+            this.DeleteHeadingLabel.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteHeadingLabel.Location = new System.Drawing.Point(24, 308);
+            this.DeleteHeadingLabel.Name = "DeleteHeadingLabel";
+            this.DeleteHeadingLabel.Size = new System.Drawing.Size(413, 16);
+            this.DeleteHeadingLabel.TabIndex = 5;
+            this.DeleteHeadingLabel.Text = "To delete a row, select the full row and press \'Delete\' on your keyboard";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(777, 679);
+            this.ClientSize = new System.Drawing.Size(776, 708);
             this.Controls.Add(this.CandidateGroupBox);
             this.Controls.Add(this.HeadingHeadingLabel);
             this.Controls.Add(this.ResetVoteButton);
@@ -244,6 +256,7 @@
             this.ResultsGroupBox.ResumeLayout(false);
             this.ResultsGroupBox.PerformLayout();
             this.CandidateGroupBox.ResumeLayout(false);
+            this.CandidateGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VotesGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -267,6 +280,7 @@
         private System.Windows.Forms.GroupBox CandidateGroupBox;
         private System.Windows.Forms.Label WinnerLabel;
         internal System.Windows.Forms.DataGridView VotesGridView;
+        private System.Windows.Forms.Label DeleteHeadingLabel;
     }
 }
 
